@@ -1,0 +1,1064 @@
+<html lang="us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Title -->
+    <title>Coffee</title>
+
+    <!-- Libs CSS -->
+    <link rel="stylesheet" href="assets/css/libs.bundle.css" />
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="assets/css/theme.bundle.css" />
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  </head>
+  <body>
+    <!-- side Search -->
+    <div
+      class="offcanvas offcanvas-end"
+      id="modalSearch"
+      tabindex="-1"
+      role="dialog"
+      aria-hidden="true"
+    >
+      <!-- Close -->
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="offcanvas"
+        aria-label="Close"
+      >
+        <i class="btn-close-search bi bi-x-lg" aria-hidden="true"></i>
+      </button>
+
+      <!-- Header-->
+      <div class="offcanvas-header lh-fixed fs-lg">
+        <strong class="mx-auto">Search</strong>
+      </div>
+
+      <!-- Body: Form -->
+      <div class="offcanvas-body">
+        <form>
+          <div class="input-group input-group-merge">
+            <input class="nav-bar-search-input form-control" type="search" placeholder="Search" />
+            <div class="input-group-append">
+              <button class="btn-search-submit btn btn-outline-border" type="button" onclick="SearchInputSubmitButton()">
+                <img width="20" height="20" src="https://img.icons8.com/fluency-systems-regular/48/search--v1.png" alt="search--v1"/>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <!-- Body: Results (add `.d-none` to disable it) -->
+      <div class="offcanvas-body border-top fs-sm">
+        <p>Search Results:</p>
+          <div class="product-list-search offcanvas-body fs-sm">
+
+          </div>
+        <!-- Button -->
+        <a class="btn btn-link px-0 text-reset" href="shop.html">
+          View All <i class="bi bi-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- Shopping Cart -->
+    <div
+      class="offcanvas offcanvas-end"
+      id="modalShoppingCart"
+      tabindex="-1"
+      role="dialog"
+      aria-hidden="true"
+    >
+      <!-- Close -->
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="offcanvas"
+        aria-label="Close"
+      >
+        <i class="bi bi-x-lg" aria-hidden="true"></i>
+      </button>
+
+      <!-- Header-->
+      <div class="offcanvas-header lh-fixed fs-lg">
+        <strong class="mx-auto">Cart</strong>
+      </div>
+
+      <!-- List group -->
+      <ul class="list-group list-group-lg list-group-flush">
+      </ul>
+
+      <!-- Total -->
+      <div
+        class="offcanvas-footer justify-between lh-fixed fs-sm bg-light mt-auto"
+      >
+        <strong>Total</strong> 
+        <strong class="total-price ms-auto">
+          <!--Total-->
+          රු 0.00
+        </strong>
+      </div>
+
+      <!-- Buttons -->
+      <div class="offcanvas-body">
+        <a class="btn w-100 btn-dark" href="checkout.html"
+          >Continue to Checkout</a
+        >
+        <a class="btn w-100 btn-outline-dark mt-2" href="shopping-cart.html"
+          >View Cart</a
+        >
+      </div>
+
+      <!--' ADD TODO: Empty cart js if '-->
+      <!-- <div class="d-none">
+    
+
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close">
+          <i class="bi bi-x-lg" aria-hidden="true"></i>
+        </button>
+    
+
+        <div class="offcanvas-header lh-fixed fs-lg">
+          <strong class="mx-auto">Cart</strong>
+        </div>
+    
+
+        <div class="offcanvas-body flex-grow-0 my-auto">
+    
+
+          <h6 class="mb-7 text-center">cart is empty </h6>
+    
+
+          <a class="btn w-100 btn-outline-dark" href="#!">
+            Add Items
+          </a>
+    
+        </div>
+    
+      </div> -->
+    </div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
+      <div class="container">
+        <!-- Brand -->
+        <a class="navbar-brand" href="index.html"> Coffee </a>
+
+        <!-- Toggler -->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarCollapse"
+          aria-controls="navbarCollapse"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Collapse -->
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <!-- Nav -->
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item ">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+
+            <li class="nav-item dropdown">
+              <!-- Toggle -->
+              <a class="nav-link" data-bs-toggle="dropdown" href="shop.html"
+                >Shop</a
+              >
+
+              <!-- Menu -->
+              <div class="dropdown-menu" style="min-width: 650px">
+                <div class="card card-lg">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col">
+                        <!-- Heading -->
+                        <div class="mb-5 fw-bold">Coffee</div>
+                        <!-- Links -->
+                        <ul class="list-styled mb-7 fs-sm">
+                          <li class="list-styled-item">
+                            <a class="list-styled-link" href="shop.html"
+                              >All Collections</a
+                            >
+                          </li>
+                          <li class="list-styled-item">
+                            <a class="list-styled-link" href="shop.html"
+                              >New Arrived</a
+                            >
+                          </li>
+                          <li class="list-styled-item">
+                            <a class="list-styled-link" href="shop.html"
+                              >Special Offers</a
+                            >
+                          </li>
+                          <li class="list-styled-item">
+                            <a class="list-styled-link" href="shop.html"
+                              >Tack Away</a
+                            >
+                          </li>
+                          <li class="list-styled-item">
+                            <a class="list-styled-link" href="shop.html"
+                              >Holiday Special</a
+                            >
+                          </li>
+                        </ul>
+                      </div>
+
+                      <div class="col">
+                        <!-- Heading -->
+                        <div class="mb-5 fw-bold">Ice Cream</div>
+                        <!-- Links -->
+                        <ul class="list-styled mb-7 fs-sm">
+                          <li class="list-styled-item">
+                            <a class="list-styled-link" href="shop.html"
+                              >All Collections</a
+                            >
+                          </li>
+                          <li class="list-styled-item">
+                            <a class="list-styled-link" href="shop.html"
+                              >Tack Away</a
+                            >
+                          </li>
+                          <li class="list-styled-item">
+                            <a class="list-styled-link" href="shop.html"
+                              >Holiday Special</a
+                            >
+                          </li>
+                        </ul>
+                      </div>
+
+                      <div class="col">
+                        <!-- Heading -->
+                        <div class="mb-5 fw-bold">Food</div>
+
+                        <!-- Links -->
+                        <ul class="list-styled mb-7 fs-sm">
+                          <li class="list-styled-item">
+                            <a class="list-styled-link" href="shop.html"
+                              >All Collections</a
+                            >
+                          </li>
+                          <li class="list-styled-item">
+                            <a class="list-styled-link" href="shop.html"
+                              >Tack Away</a
+                            >
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <li class="nav-item ">
+              <!-- Toggle -->
+              <a class="nav-link" href="about.html">About</a>
+            </li>
+
+            <li class="nav-item dropdown">
+              <!-- Toggle -->
+              <a class="nav-link" data-bs-toggle="dropdown" href="#">Helps</a>
+
+              <!-- Menu -->
+              <div class="dropdown-menu">
+                <div class="card card-lg">
+                  <div class="card-body">
+                    <ul class="list-styled fs-sm">
+                      <li class="list-styled-item">
+                        <a class="list-styled-link" href="contact-us.html">contact-Us</a>
+                      </li>
+                      <li class="list-styled-item">
+                        <a class="list-styled-link" href="faq.html">FAQ</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <li class="nav-item ">
+              <!-- Toggle -->
+              <a class="nav-link" href="blog.html">Blog</a>
+            </li>
+
+          </ul>
+
+          <!-- Nav -->
+          <ul class="navbar-nav flex-row">
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                data-bs-toggle="offcanvas"
+                href="#modalSearch"
+              >
+                <img width="20" height="20" src="https://img.icons8.com/fluency-systems-regular/48/search--v1.png" alt="search--v1"/>
+              </a>
+            </li>
+
+            <li class="nav-item ms-lg-n4">
+              <a class="nav-link" href="account-personal-info.html">
+              <img width="20" height="20" src="https://img.icons8.com/fluency-systems-regular/48/user--v1.png" alt="user--v1"/>
+              </a>
+            </li>
+
+            <li class="nav-item ms-lg-n4">
+              <a class="nav-link" href="account-wishlist.html">
+                <img width="20" height="20" src="https://img.icons8.com/fluency-systems-regular/48/like--v1.png" alt="like--v1"/>
+              </a>
+            </li>
+
+            <li class="nav-item ms-lg-n4">
+              <a
+                class="nav-link"
+                data-bs-toggle="offcanvas"
+                href="#modalShoppingCart"
+              >
+              <span class="cartItemInNav" data-cart-items="0">
+                <img width="20" height="20" src="https://img.icons8.com/fluency-systems-regular/48/shopping-cart--v1.png" alt="shopping-cart--v1"/>
+              </span>
+              </a>
+            </li>
+          </ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <!-- SLIDER -->
+    <section>
+      <div data-flickity='{"prevNextButtons": false, "fade": true}'>
+        <!-- Item -->
+        <div
+          class="w-100 bg-cover"
+          style="background-image: url(assets/img/www_pinterest_com/8.png)"
+        >
+          <div
+            class="container d-flex flex-column">
+            <div class="row align-items-center py-12" style="min-height: 550px ">
+              <div class="col-12 col-md-6 col-lg-5 col-xl-4 offset-md-1">
+                <!-- Heading -->
+                <h1>HOLIDAY OFFERS</h1>
+
+                <!-- Heading -->
+                <h2 class="display-1 text-primary">70%</h2>
+
+                <!-- Heading -->
+                <h5 class="mt-n4 mb-8">GET 3 IN 1 COFFEE PACKEGES</h5>
+
+                <!-- Button -->
+                <a class="btn btn-dark" href="shop.html">
+                  Shop Now <i class="bi bi-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item -->
+        <div
+          class="w-100 bg-cover"
+          style="background-image: url(assets/img/www_pinterest_com/52.png)"
+        >
+          <div
+            class="container d-flex flex-column">
+            <div class="row align-items-center justify-content-end py-12" style="min-height: 550px ">
+              <div class="col-12 col-md-6 col-lg-5 col-xl-4 offset-md-n1">
+                <!-- Heading -->
+                <h1 class="mb-5">NEW COLLECTION OFFERS</h1>
+
+                <!-- Text -->
+                <p class="mb-8 fs-lg">
+                  BUY & TEST NEW ITEMS AND WIN FREE HOLIDAY PACK
+                </p>
+
+                <!-- Button -->
+                <a class="btn btn-dark" href="shop.html">
+                  Shop Now <i class="bi bi-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item -->
+        <div
+          class="w-100 bg-cover"
+          style="
+            background-image: url(assets/img/www_pinterest_com/51.png);
+          "
+        >
+          <div class="bg-dark-20">
+            <div class="container d-flex flex-column">
+              <div
+                class="row align-items-center justify-content-end"
+                style="min-height: 550px"
+              >
+                <div class="col-12 text-center text-white">
+                  <!-- Preheading -->
+                  <h4 class="mb-0">NEW ARRIVER</h4>
+
+                  <!-- Heading -->
+                  <h1 class="display-1">50% OFF</h1>
+
+                  <!-- Links -->
+                  <p class="mb-0">
+                    <a
+                      href="shop.html"
+                      class="link-underline text-reset mx-4 my-4"
+                      >Shop ICE-COFFEE</a
+                    >
+                    <a
+                      href="shop.html"
+                      class="link-underline text-reset mx-4 my-4"
+                      >Shop BREAKFAST</a
+                    >
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BEST PICKS -->
+    <section class="pt-12">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-12 col-md-10 col-lg-8 col-xl-6 text-center">
+            <h6 class="heading-xxs mb-3 text-gray-400">New Arrived</h6>
+            <h2 class="mb-10">NEW COLLECTIONS</h2>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12 col-md-5 col-lg-4 d-flex flex-column">
+            <div
+              class="card mb-7 text-white"
+              style="
+                min-height: 400px
+              "
+            >
+              <div class="card-bg">
+                <div
+                  class="card-bg-img bg-cover"
+                  style="
+                    background-image: url(https://i.pinimg.com/474x/a4/50/2c/a4502c62f6bc8268d27197f9499165c2.jpg);
+                  "
+                ></div>
+              </div>
+
+              <div class="card-body my-auto text-center">
+                <h4 class="mb-0  text-dark">COFFEE COLLECTIONS</h4>
+                <a
+                  class="btn btn-link stretched-link text-reset"
+                  href="shop.html"
+                >
+                  Shop Now <i class="bi bi-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-7 col-lg-8 d-flex flex-column">
+            <div class="card mb-7 text-body" style="min-height: 400px">
+              <div class="card-bg">
+                <div
+                  class="card-bg-img bg-cover"
+                  style="
+                    background-image: url(https://static01.nyt.com/images/2019/06/03/dining/kc-vietnamese-iced-coffee/kc-vietnamese-iced-coffee-superJumbo.jpg);
+                  "
+                ></div>
+              </div>
+              <div class="card-body my-auto px-md-10 text-center text-md-start">
+                <h4 class="mb-0 text-dark">COSTUMES YOUR COFFEE</h4>
+                <a
+                  class="btn btn-link stretched-link px-0 text-white"
+                  href="shop.html"
+                >
+                  Shop Now <i class="bi bi-arrow-right ms-2 text-white"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-7 col-lg-8 d-flex flex-column">
+            <div class="card mb-7 mb-md-0 text-body" style="min-height: 400px">
+              <div class="card-bg">
+                <div
+                  class="card-bg-img bg-cover"
+                  style="
+                    background-image: url(https://realfood.tesco.com/media/images/RFO-1400x919-IcedCoffee-76221116-2565-4103-9899-89571028018e-0-1400x919.jpg);
+                  "
+                ></div>
+              </div>
+
+              <div class="card-body my-auto px-md-10 text-center text-md-start">
+                <h4 class="mb-0 text-dark">ICE-COFFEE</h4>
+                <a
+                  class="btn btn-link stretched-link px-0 text-white"
+                  href="shop.html"
+                >
+                  Shop Now <i class="bi bi-arrow-right ms-2 text-white"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-5 col-lg-4 d-flex flex-column">
+            <div class="card text-white" style="min-height: 400px">
+              <div class="card-bg">
+                <div
+                  class="card-bg-img bg-cover"
+                  style="
+                    background-image: url(https://www.everydaycheapskate.com/wp-content/uploads/cold-brew-iced-coffee-cropped-500x500.jpg);
+                  "
+                ></div>
+              </div>
+              <div class="card-body my-auto text-center">
+                <h4 class="mb-0 text-dark">NEW BRAVE COFFEE</h4>
+                <a
+                  class="btn btn-link stretched-link text-reset"
+                  href="shop.html"
+                >
+                  Shop Now <i class="bi bi-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOP SELLERS -->
+    <section class="py-12">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-12 col-md-10 col-lg-8 col-xl-6">
+            <!-- Heading -->
+            <h2 class="mb-4 text-center">BEST SELLERS</h2>
+
+            <!-- Nav -->
+            <div class="nav justify-content-center mb-10">
+              <a
+                class="nav-link active"
+                href="#topSellersTabCoffee"
+                data-bs-toggle="tab"
+                >COFFEE</a
+              >
+              <a class="nav-link" href="#topSellersTabFood" data-bs-toggle="tab"
+                >FOOD</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-content">
+          <div class="tab-pane fade show active" id="topSellersTabCoffee">
+            <div class="row product-list-sell">
+
+
+
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-content">
+          <div class="tab-pane fade show active" id="topSellersTabFood">
+            <div class="row product-list-sell-Food">
+
+
+
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <div class="mt-7 text-center">
+              <a class="link-underline" href="shop.html">Discover more</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SALE -->
+    <section class="mb-10">
+      <div
+        class="container bg-cover"
+        style="
+          background-image: url(https://images.immediate.co.uk/production/volatile/sites/2/2021/11/Caramel-iced-coffee-f73307b.png);
+        "
+      >
+        <div class="row py-12">
+          <div class="col-12 text-center text-white">
+            <!-- Preheading -->
+            <h4 class="text-dark">ONE OF BEST OFFERS</h4>
+
+            <!-- Heading -->
+            <h2 class="display-1 text-uppercase text-primary">50% OFF</h2>
+
+            <!-- Links -->
+            <a class="link-underline text-reset mx-4 my-4 text-white" href="shop.html"
+              >Shop COFFEE</a
+            >
+            <a class="link-underline text-reset mx-4 my-4 " href="shop.html"
+              >Shop FOOD</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOP SELLERS -->
+    <section class="py-12">
+      <div class="container">
+
+        <div class="row justify-content-center">
+          <div class="col-12 col-md-10 col-lg-8 col-xl-6">
+            <!-- Heading -->
+            <h2 class="mb-4 text-center">BEST SELLERS</h2>
+
+            <!-- Nav -->
+            <div class="nav justify-content-center mb-10">
+              <a
+                class="nav-link active"
+                href="#topSellersTabCoffee"
+                data-bs-toggle="tab"
+                >COFFEE</a
+              >
+              <a class="nav-link" href="#topSellersTabFood" data-bs-toggle="tab"
+                >FOOD</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-content">
+          <div class="tab-pane fade show active" id="topSellersTabCoffee">
+            <div class="row product-list-new">
+              <!-- Card -->
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <div class="mt-7 text-center">
+              <a class="link-underline" href="shop.html">Discover more</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- BEST PICKS -->
+    <section>
+      <div class="container">
+        <div class="row">
+          <div class="col-12 col-md-12 col-lg-8 d-flex flex-column mb-7">
+            <!-- Card -->
+            <div
+              class="card card-lg justify-content-end bg-cover"
+              style="min-height: 490px"
+            >
+              <!-- Background -->
+              <div class="card-bg">
+                <div
+                  class="card-bg-img bg-cover"
+                  style="
+                    background-image: url(assets/img/www_pinterest_com/50.png);
+                  "
+                ></div>
+              </div>
+
+              <!-- Content -->
+              <div class="row">
+                <div class="col-12 col-md-7 position-static">
+                  <div class="card-body m-6">
+                    <!-- Heading -->
+                    <h4>NEW SUMMER COLLECTION</h4>
+
+                    <!-- Button -->
+                    <a
+                      class="btn btn-link stretched-link px-0 text-body"
+                      href="shop.html"
+                    >
+                      Shop Now <i class="bi bi-arrow-right"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-4 d-flex flex-column mb-7">
+            <!-- Card -->
+            <a
+              class="card justify-content-center bg-cover"
+              href="shop.html"
+              style="min-height: 490px"
+            >
+              <!-- Background -->
+              <div class="card-bg">
+                <div
+                  class="card-bg-img bg-cover"
+                  style="
+                    background-image: url(assets/img/www_pinterest_com/13-Photoroom.png);
+                  "
+                ></div>
+              </div>
+
+              <!-- Body -->
+              <div class="card-body text-center text-dark">
+                <!-- Preheading -->
+                <p class="text-uppercase">ENJOY YOUR FAVORITE</p>
+
+                <!-- Heading -->
+                <h2 class="display-4">50% OFF</h2>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-4 d-flex flex-column mb-7 mb-lg-0">
+            <!-- Card -->
+            <div
+              class="card card-lg justify-content-center h-100 bg-pattern bg-primary"
+              style="min-height: 320px"
+            >
+              <div class="card-body text-center text-white">
+                <!-- Heading -->
+                <h5 class="mb-4">Subscribe to Newsletter</h5>
+
+                <!-- Text -->
+                <p class="mb-8">
+                  Receive an exclusive 10% discount code when you signup.
+                </p>
+
+                <!-- Form -->
+                <form>
+                  <div class="input-group input-group-merge">
+                    <input
+                      type="email"
+                      class="form-control form-control-light form-control-sm"
+                      placeholder="Enter Email *"
+                    />
+                    <div class="input-group-append">
+                      <button
+                        class="btn btn-outline-white btn-sm bg-none text-white"
+                      >
+                        Subscribe
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-4 d-flex flex-column mb-7 mb-md-0">
+            <!-- Card -->
+            <div
+              class="card justify-content-center bg-cover"
+              style="min-height: 320px"
+            >
+              <!-- Background -->
+              <div class="card-bg">
+                <div
+                  class="card-bg-img bg-cover"
+                  style="
+                    background-image: url(https://hospibuz.com/wp-content/uploads/2021/12/Slay-Coffee-4-scaled.jpg);
+                  "
+                ></div>
+              </div>
+
+              <!-- Body -->
+              <div class="card-body text-center text-dark">
+                <!-- Heading -->
+                <h5 class="mb-0">HOLIDAY SPECIAL OFFERS</h5>
+
+                <!-- Text -->
+                <a
+                  class="btn btn-link stretched-link px-0 text-white"
+                  href="shop.html"
+                >
+                  Shop now <i class="bi bi-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-4 d-flex flex-column">
+            <!-- Card -->
+            <div
+              class="card justify-content-center bg-cover"
+              style="min-height: 320px"
+            >
+              <!-- Background -->
+              <div class="card-bg">
+                <div
+                  class="card-bg-img bg-cover"
+                  style="
+                    background-image: url(assets/img/www_pinterest_com/36.jpeg);
+                  "
+                ></div>
+              </div>
+
+              <!-- Body -->
+              <div class="card-body text-center text-dark">
+                <!-- Heading -->
+                <h5 class="mb-0">TAKE AWAY OFFERS</h5>
+
+                <!-- Text -->
+                <a
+                  class="btn btn-link stretched-link px-0 text-white"
+                  href="shop.html"
+                >
+                  Shop now <i class="bi bi-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BLOG -->
+    <section class="py-12">
+      <div class="container">
+        <div class="row align-items-center mb-10">
+          <div class="col-12 col-sm">
+            <!-- Heading -->
+            <h2 class="mb-4 mb-sm-0 text-center text-sm-start">
+              Latest in Blog
+            </h2>
+          </div>
+          <div class="col-12 col-sm-auto">
+            <!-- Link -->
+            <div class="text-center text-sm-start">
+              <a class="link-underline" href="blog.html"> Discover more </a>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 col-md-4">
+            <!-- Card -->
+            <div class="card mb-7 mb-md-0">
+              <!-- Image -->
+              <img
+                class="card-img-top"
+                src="assets/img/www_pinterest_com/55.png"
+                alt="..."
+              />
+
+              <!-- Badge -->
+              <div
+                class="badge bg-white text-body card-badge card-badge-start text-uppercase"
+              >
+                <time datetime="2019-06-20"> Jun 20 </time>
+              </div>
+
+              <!-- Body -->
+              <div class="card-body px-0 py-7">
+                <!-- Heading -->
+                <h6 class="mb-3">Lorem, ipsum dolor sit amet consectetur</h6>
+
+                <!-- Text -->
+                <p class="mb-2">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae
+                  ullam distinctio alias quia vero quisquam explicabo obcaecati
+                  enim esse
+                </p>
+
+                <!-- Link -->
+                <a
+                  class="btn btn-link stretched-link px-0 text-body"
+                  href="blog-post.html"
+                >
+                  Read more <i class="bi bi-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-4">
+            <!-- Card -->
+            <div class="card mb-7 mb-md-0">
+              <!-- Image -->
+              <img
+                class="card-img-top"
+                src="assets/img/www_pinterest_com/53.jpg"
+                alt="..."
+              />
+
+              <!-- Badge -->
+              <div
+                class="badge bg-white text-body card-badge card-badge-start text-uppercase"
+              >
+                <time datetime="2019-06-20"> Jun 20 </time>
+              </div>
+
+              <!-- Body -->
+              <div class="card-body px-0 py-7">
+                <!-- Heading -->
+                <h6 class="mb-3">Lorem, ipsum dolor sit amet consectetur</h6>
+
+                <!-- Text -->
+                <p class="mb-2">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae
+                  ullam distinctio alias quia vero quisquam explicabo obcaecati
+                  enim esse
+                </p>
+
+                <!-- Link -->
+                <a
+                  class="btn btn-link stretched-link px-0 text-body"
+                  href="blog-post.html"
+                >
+                  Read more <i class="bi bi-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-4">
+            <!-- Card -->
+            <div class="card mb-7 mb-md-0">
+              <!-- Image -->
+              <img
+                class="card-img-top"
+                src="assets/img/www_pinterest_com/50.png"
+                alt="..."
+              />
+
+              <!-- Badge -->
+              <div
+                class="badge bg-white text-body card-badge card-badge-start text-uppercase"
+              >
+                <time datetime="2019-06-20"> Jun 20 </time>
+              </div>
+
+              <!-- Body -->
+              <div class="card-body px-0 py-7">
+                <!-- Heading -->
+                <h6 class="mb-3">Lorem, ipsum dolor sit amet consectetur</h6>
+
+                <!-- Text -->
+                <p class="mb-2">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae
+                  ullam distinctio alias quia vero quisquam explicabo obcaecati
+                  enim esse
+                </p>
+
+                <!-- Link -->
+                <a
+                  class="btn btn-link stretched-link px-0 text-body"
+                  href="blog-post.html"
+                >
+                  Read more <i class="bi bi-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--Footer-->
+    <footer class="">
+      <div
+        class="py-12 bg-dark bg-cover text-center"
+        style="background-image: url(assets/img/patterns/pattern-2.svg)"
+      >
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <!-- Brand -->
+              <h2 class="mb-7 text-white">Coffee.</h2>
+
+              <!-- Links -->
+              <ul class="list-inline mb-7">
+                <li class="list-inline-item px-3">
+                  <a class="text-gray-300" href="contact-us.html">Home</a>
+                </li>
+                <li class="list-inline-item px-3">
+                  <a class="text-gray-300" href="faq.html">FAQs</a>
+                </li>
+                <li class="list-inline-item px-3">
+                  <a
+                    class="text-gray-300"
+                    data-bs-toggle="modal"
+                    href="#modalSizeChart"
+                    >Offers</a
+                  >
+                </li>
+                <li class="list-inline-item px-3">
+                  <a class="text-gray-300" href="shipping-and-returns.html"
+                    >Contact Us</a
+                  >
+                </li>
+                <li class="list-inline-item px-3">
+                  <a class="text-gray-300" href="about.html">About us</a>
+                </li>
+              </ul>
+
+              <!-- Links -->
+              <ul class="list-inline fs-lg">
+                <li class="list-inline-item">
+                  <a class="text-gray-300" href="#!">
+                    <i class="fab fa-facebook"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a class="text-gray-300" href="#!">
+                    <i class="fab fa-youtube"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a class="text-gray-300" href="#!">
+                    <i class="fab fa-twitter"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a class="text-gray-300" href="#!">
+                    <i class="fab fa-instagram"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a class="text-gray-300" href="#!">
+                    <i class="fab fa-medium"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+
+
+
+<script src="assets/js/Cart.js"></script>
+<script src="assets/js/NewProduct.js"></script>
+<script src="assets/js/search.js"></script>
+<script src="assets/js/SellProducts.js"></script>
+<script src="assets/js/theme.bundle.js"></script>
+<script src="assets/js/vendor.bundle.js"></script>
+<script src="assets/js/Wishlist.js"></script>
+
+
+
+
+  </body>
+</html>

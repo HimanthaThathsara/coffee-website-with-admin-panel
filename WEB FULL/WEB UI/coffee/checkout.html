@@ -1,0 +1,797 @@
+<html lang="us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Title -->
+    <title>Coffee</title>
+
+    <!-- Libs CSS -->
+    <link rel="stylesheet" href="assets/css/libs.bundle.css" />
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="assets/css/theme.bundle.css" />
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  </head>
+  <body>
+    <!-- side Search -->
+    <div
+      class="offcanvas offcanvas-end"
+      id="modalSearch"
+      tabindex="-1"
+      role="dialog"
+      aria-hidden="true"
+    >
+      <!-- Close -->
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="offcanvas"
+        aria-label="Close"
+      >
+        <i class="btn-close-search bi bi-x-lg" aria-hidden="true"></i>
+      </button>
+
+      <!-- Header-->
+      <div class="offcanvas-header lh-fixed fs-lg">
+        <strong class="mx-auto">Search</strong>
+      </div>
+
+      <!-- Body: Form -->
+      <div class="offcanvas-body">
+        <form>
+          <div class="input-group input-group-merge">
+            <input class="nav-bar-search-input form-control" type="search" placeholder="Search" />
+            <div class="input-group-append">
+              <button class="btn-search-submit btn btn-outline-border" type="button" onclick="SearchInputSubmitButton()">
+                <img width="20" height="20" src="https://img.icons8.com/fluency-systems-regular/48/search--v1.png" alt="search--v1"/>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <!-- Body: Results (add `.d-none` to disable it) -->
+      <div class="offcanvas-body border-top fs-sm">
+        <p>Search Results:</p>
+          <div class="product-list-search offcanvas-body fs-sm">
+
+          </div>
+        <!-- Button -->
+        <a class="btn btn-link px-0 text-reset" href="shop.html">
+          View All <i class="bi bi-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- Shopping Cart -->
+    <div
+      class="offcanvas offcanvas-end"
+      id="modalShoppingCart"
+      tabindex="-1"
+      role="dialog"
+      aria-hidden="true"
+    >
+      <!-- Close -->
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="offcanvas"
+        aria-label="Close"
+      >
+        <i class="bi bi-x-lg" aria-hidden="true"></i>
+      </button>
+
+      <!-- Header-->
+      <div class="offcanvas-header lh-fixed fs-lg">
+        <strong class="mx-auto">Cart</strong>
+      </div>
+
+      <!-- List group -->
+      <ul class="list-group list-group-lg list-group-flush">
+      </ul>
+
+      <!-- Total -->
+      <div
+        class="offcanvas-footer justify-between lh-fixed fs-sm bg-light mt-auto"
+      >
+        <strong>Total</strong> 
+        <strong class="total-price ms-auto">
+          <!--Total-->
+          රු 0.00
+        </strong>
+      </div>
+
+      <!-- Buttons -->
+      <div class="offcanvas-body">
+        <a class="btn w-100 btn-dark" href="checkout.html"
+          >Continue to Checkout</a
+        >
+        <a class="btn w-100 btn-outline-dark mt-2" href="shopping-cart.html"
+          >View Cart</a
+        >
+      </div>
+
+      <!--' ADD TODO: Empty cart js if '-->
+      <!-- <div class="d-none">
+    
+
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close">
+          <i class="bi bi-x-lg" aria-hidden="true"></i>
+        </button>
+    
+
+        <div class="offcanvas-header lh-fixed fs-lg">
+          <strong class="mx-auto">Cart</strong>
+        </div>
+    
+
+        <div class="offcanvas-body flex-grow-0 my-auto">
+    
+
+          <h6 class="mb-7 text-center">cart is empty </h6>
+    
+
+          <a class="btn w-100 btn-outline-dark" href="#!">
+            Add Items
+          </a>
+    
+        </div>
+    
+      </div> -->
+    </div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
+        <div class="container">
+          <!-- Brand -->
+          <a class="navbar-brand" href="index.html"> Coffee </a>
+  
+          <!-- Toggler -->
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarCollapse"
+            aria-controls="navbarCollapse"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+  
+          <!-- Collapse -->
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <!-- Nav -->
+            <ul class="navbar-nav mx-auto">
+              <li class="nav-item ">
+                <a class="nav-link" href="index.html">Home</a>
+              </li>
+  
+              <li class="nav-item dropdown">
+                <!-- Toggle -->
+                <a class="nav-link" data-bs-toggle="dropdown" href="shop.html"
+                  >Shop</a
+                >
+  
+                <!-- Menu -->
+                <div class="dropdown-menu" style="min-width: 650px">
+                  <div class="card card-lg">
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col">
+                          <!-- Heading -->
+                          <div class="mb-5 fw-bold">Coffee</div>
+                          <!-- Links -->
+                          <ul class="list-styled mb-7 fs-sm">
+                            <li class="list-styled-item">
+                              <a class="list-styled-link" href="shop.html"
+                                >All Collections</a
+                              >
+                            </li>
+                            <li class="list-styled-item">
+                              <a class="list-styled-link" href="shop.html"
+                                >New Arrived</a
+                              >
+                            </li>
+                            <li class="list-styled-item">
+                              <a class="list-styled-link" href="shop.html"
+                                >Special Offers</a
+                              >
+                            </li>
+                            <li class="list-styled-item">
+                              <a class="list-styled-link" href="shop.html"
+                                >Tack Away</a
+                              >
+                            </li>
+                            <li class="list-styled-item">
+                              <a class="list-styled-link" href="shop.html"
+                                >Holiday Special</a
+                              >
+                            </li>
+                          </ul>
+                        </div>
+  
+                        <div class="col">
+                          <!-- Heading -->
+                          <div class="mb-5 fw-bold">Ice Cream</div>
+                          <!-- Links -->
+                          <ul class="list-styled mb-7 fs-sm">
+                            <li class="list-styled-item">
+                              <a class="list-styled-link" href="shop.html"
+                                >All Collections</a
+                              >
+                            </li>
+                            <li class="list-styled-item">
+                              <a class="list-styled-link" href="shop.html"
+                                >Tack Away</a
+                              >
+                            </li>
+                            <li class="list-styled-item">
+                              <a class="list-styled-link" href="shop.html"
+                                >Holiday Special</a
+                              >
+                            </li>
+                          </ul>
+                        </div>
+  
+                        <div class="col">
+                          <!-- Heading -->
+                          <div class="mb-5 fw-bold">Food</div>
+  
+                          <!-- Links -->
+                          <ul class="list-styled mb-7 fs-sm">
+                            <li class="list-styled-item">
+                              <a class="list-styled-link" href="shop.html"
+                                >All Collections</a
+                              >
+                            </li>
+                            <li class="list-styled-item">
+                              <a class="list-styled-link" href="shop.html"
+                                >Tack Away</a
+                              >
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+  
+              <li class="nav-item ">
+                <!-- Toggle -->
+                <a class="nav-link" href="about.html">About</a>
+              </li>
+  
+              <li class="nav-item dropdown">
+                <!-- Toggle -->
+                <a class="nav-link" data-bs-toggle="dropdown" href="#">Helps</a>
+  
+                <!-- Menu -->
+                <div class="dropdown-menu">
+                  <div class="card card-lg">
+                    <div class="card-body">
+                      <ul class="list-styled fs-sm">
+                        <li class="list-styled-item">
+                          <a class="list-styled-link" href="contact-us.html">contact-Us</a>
+                        </li>
+                        <li class="list-styled-item">
+                          <a class="list-styled-link" href="faq.html">FAQ</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </li>
+  
+              <li class="nav-item ">
+                <!-- Toggle -->
+                <a class="nav-link" href="blog.html">Blog</a>
+              </li>
+  
+            </ul>
+  
+            <!-- Nav -->
+            <ul class="navbar-nav flex-row">
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  data-bs-toggle="offcanvas"
+                  href="#modalSearch"
+                >
+                  <img width="20" height="20" src="https://img.icons8.com/fluency-systems-regular/48/search--v1.png" alt="search--v1"/>
+                </a>
+              </li>
+  
+              <li class="nav-item ms-lg-n4">
+                <a class="nav-link" href="account-personal-info.html">
+                <img width="20" height="20" src="https://img.icons8.com/fluency-systems-regular/48/user--v1.png" alt="user--v1"/>
+                </a>
+              </li>
+  
+              <li class="nav-item ms-lg-n4">
+                <a class="nav-link" href="account-wishlist.html">
+                  <img width="20" height="20" src="https://img.icons8.com/fluency-systems-regular/48/like--v1.png" alt="like--v1"/>
+                </a>
+              </li>
+  
+              <li class="nav-item ms-lg-n4">
+                <a
+                  class="nav-link"
+                  data-bs-toggle="offcanvas"
+                  href="#modalShoppingCart"
+                >
+                <span class="cartItemInNav" data-cart-items="0">
+                  <img width="20" height="20" src="https://img.icons8.com/fluency-systems-regular/48/shopping-cart--v1.png" alt="shopping-cart--v1"/>
+                </span>
+                </a>
+              </li>
+            </ul>
+  
+          </div>
+        </div>
+    </nav>
+  
+
+    <!-- Inform Order-->
+    <div class="modal fade" id="modalPlaceOrder" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+    
+          <!-- Close -->
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+            <i class="bi bi-x-lg" aria-hidden="true"></i>
+          </button>
+    
+          <!-- Header-->
+          <div class="modal-header lh-fixed fs-lg">
+            <strong class="mx-auto">Your Order is Completed!</strong>
+          </div>
+    
+          <!-- Body -->
+          <div class="modal-body text-center">
+
+            <img width="128" height="128" style="margin-bottom: 20px;" src="https://img.icons8.com/windows/128/checked--v1.png" alt="checked--v1"/>
+    
+            <!-- Text -->
+            <p class="mb-7 text-gray-500">
+              Your order <span class="text-body text-decoration-underline">673290789</span> has been completed. Your order details
+              are shown for your personal accont.
+            </p>
+    
+              <!-- Button -->
+              <button class="btn btn-sm btn-dark">
+                <a class="fs-sm text-reset" href="account-orders.html">View My Orders</a>
+              </button>
+    
+          </div>
+    
+        </div>
+    
+      </div>
+    </div>
+
+    <!-- CONTENT -->
+    <section class="pt-7 pb-12">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 text-center">
+              <h3 class="mb-4">Checkout</h3> 
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 col-md-7">
+
+            <!-- Form -->
+            <form>
+
+              <!-- Heading -->
+              <h6 class="mb-7">Shipping Details</h6>
+
+              <div class="list-group list-group-sm mb-7">
+                <div class="list-group-item">
+
+                  <!-- Radio -->
+                  <div class="form-check custom-radio">
+
+                    <!-- Input -->
+                    <input class="form-check-input" id="homeaddress" name="payment" type="radio" >
+
+                    <!-- Label -->
+                    <label class="form-check-label fs-sm text-body text-nowrap" for="homeaddress">
+                      Home Address
+                    </label>
+
+                  </div>
+
+                </div>
+
+                <div class="list-group-item">
+
+                  <!-- Radio -->
+                  <div class="form-check custom-radio">
+
+                    <!-- Input -->
+                    <input class="form-check-input" id="addnewaddress" name="payment" type="radio" data-collapse="show" data-target="#addaddress">
+                    <label class="form-check-label-custom fs-sm text-body text-nowrap" for="addnewaddress  ">
+                      Add New <img width="20" height="20" src="https://img.icons8.com/fluency-systems-regular/48/plus-math--v1.png" alt="plus-math--v1"/>
+                     </label>
+                  </div>
+                </div>
+
+                <div class="list-group-item collapse py-0" id="addaddress">
+
+                  <!-- Form -->
+                  <div class="row gx-5 py-5">
+                    <div class="col-12">
+                      <div class="form-group mb-4">
+                        <label class="visually-hidden" for="addresscountry">Country</label>
+                        <input class="form-control form-control-sm" id="addresscountry" type="text" placeholder="Country" required>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="form-group mb-4">
+                        <label class="visually-hidden" for="addressprovince">Province</label>
+                        <input class="form-control form-control-sm" id="addressprovince" type="text" placeholder="Province" required>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="form-group mb-4">
+                        <label class="visually-hidden" for="homeaddress">Home Address</label>
+                        <input class="form-control form-control-sm" id="homeaddress" type="text" placeholder="Home Address" required>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="form-group mb-4">
+                        <label class="visually-hidden" for="addressZipcode">Zip Code</label>
+                        <input class="form-control form-control-sm" id="addressZipcode" type="text" placeholder="Zip Code" required>
+                      </div>
+                    </div>
+                    <button class="btn w-100 btn-dark" type="submit">Add</button>
+                  </div>
+
+                </div>
+
+              </div>
+
+              <!-- Heading -->
+              <h6 class="mb-7">Payment</h6>
+
+              <!-- List group -->
+              <div class="list-group list-group-sm mb-7">
+                <div class="list-group-item">
+
+                  <!-- Radio -->
+                  <div class="form-check custom-radio">
+
+                    <!-- Input -->
+                    <input class="form-check-input" name="payment" type="radio" >
+
+                    <!-- Label -->
+                    <label class="form-check-label fs-sm text-body text-nowrap" for="checkoutPaymentCard">
+                      Credit Card <img class="ms-2" src="assets/img/brands/color/cards.svg" alt="...">
+                    </label>
+
+                  </div>
+
+                </div>
+                <div class="list-group-item">
+
+                  <!-- Radio -->
+                  <div class="form-check custom-radio">
+
+                    <!-- Input -->
+                    <input class="form-check-input" id="checkoutPaymentPaypal" name="payment" type="radio" data-collapse="hide" data-target="#checkoutPaymentCardCollapse">
+
+                    <!-- Label -->
+                    <label class="form-check-label fs-sm text-body text-nowrap" for="checkoutPaymentPaypal">
+                      <img src="assets/img/brands/color/paypal.svg" alt="...">
+                    </label>
+
+                  </div>
+
+                </div>
+                <div class="list-group-item">
+
+                  <!-- Radio -->
+                  <div class="form-check custom-radio">
+
+                    <!-- Input -->
+                    <input class="form-check-input" id="checkoutPaymentCard" name="payment" type="radio" data-collapse="show" data-target="#checkoutPaymentCardCollapse">
+
+                    <!-- Label -->
+                    <label class="form-check-label-custom fs-sm text-body text-nowrap" for="checkoutPaymentCard">
+                     Add Card  <img width="20" height="20" src="https://img.icons8.com/fluency-systems-regular/48/plus-math--v1.png" alt="plus-math--v1"/>
+                    </label>
+
+                  </div>
+                </div>
+                
+                <div class="list-group-item collapse py-0" id="checkoutPaymentCardCollapse">
+
+                  <!-- Form -->
+                  <div class="row gx-5 py-5">
+                    <div class="col-12">
+                      <div class="form-group mb-4">
+                        <label class="visually-hidden" for="checkoutPaymentCardNumber">Card Number</label>
+                        <input class="form-control form-control-sm" id="checkoutPaymentCardNumber" type="text" placeholder="Card Number" required>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="form-group mb-4">
+                        <label class="visually-hidden" for="checkoutPaymentCardName">Card Holder Name</label>
+                        <input class="form-control form-control-sm" id="checkoutPaymentCardName" type="text" placeholder="Card Holder Name" required>
+                      </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                      <div class="form-group mb-md-0">
+                        <label class="visually-hidden" for="checkoutPaymentMonth">Month</label>
+                        <select class="form-select form-select-sm" id="checkoutPaymentMonth">
+                          <option>Month</option>
+                          <option>February</option>
+                          <option>March</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                      <div class="form-group mb-md-0">
+                        <label class="visually-hidden" for="checkoutPaymentCardYear">Year</label>
+                        <select class="form-select form-select-sm" id="checkoutPaymentCardYear">
+                          <option>Year</option>
+                          <option>2025</option>
+                          <option>2028</option>
+                          <option>2029</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                      <div class="input-group input-group-merge">
+                        <input class="form-control form-control-sm" id="checkoutPaymentCardCVV" type="text" placeholder="CVV" required>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+            </form>
+
+          </div>
+
+          <div class="col-12 col-md-5 col-lg-4 offset-lg-1">
+
+            <!-- Heading -->
+            <h6 class="mb-7">Order Items (3)</h6>
+
+            <hr class="my-7">
+
+            <ul class="checkout-list list-group list-group-lg list-group-flush-y list-group-flush-x mb-7">
+
+
+              <li class="list-group-item">
+                <div class="row align-items-center">
+                  <div class="col-4">
+
+                    <!-- Image -->
+                    <a href="product.html">
+                      <img src="assets/img/products/product-10.png" alt="..." class="img-fluid">
+                    </a>
+
+                  </div>
+                  <div class="col">
+
+                    <!-- Title -->
+                    <p class="mb-4 fs-sm fw-bold">
+                      <a class="text-body" href="product.html">Coffee</a> <br>
+                      <span class="text-muted">රු  49.00</span>
+                    </p>
+
+                    <!-- Text -->
+                    <div class="fs-sm text-muted">
+                      Color: Brown
+                    </div>
+
+                  </div>
+                </div>
+              </li>
+
+            </ul>
+
+            <!-- Card -->
+            <div class="card mb-9 bg-light">
+              <div class="card-body">
+                <ul class="list-group list-group-sm list-group-flush-y list-group-flush-x">
+                  <li class="list-group-item d-flex">
+                    <span>Subtotal</span> <span class="subtotal ms-auto fs-sm"></span>
+                  </li>
+                  <li class="list-group-item d-flex">
+                    <span>Tax</span> <span class="tax ms-auto fs-sm"></span>
+                  </li>
+                  <li class="list-group-item d-flex">
+                    <span>Shipping</span> <span class="ms-auto fs-sm">--</span>
+                  </li>
+                  <li class="list-group-item d-flex fs-lg fw-bold">
+                    <span>Total</span> <span class="ChkectoutTotalPrice ms-auto"></span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Button -->
+            <button class="btn w-100 btn-dark">
+              <a class="fs-sm text-reset" data-bs-toggle="modal" href="#modalPlaceOrder"> Place Order</a>
+            </button>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--Footer-->
+    <footer class="">
+      <div class="py-12 bg-dark bg-cover text-center" style="background-image: url(assets/img/patterns/pattern-2.svg)">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+    
+              <!-- Brand -->
+              <h2 class="mb-7 text-white">Coffee.</h2>
+    
+              <!-- Links -->
+              <ul class="list-inline mb-7">
+                <li class="list-inline-item px-3">
+                  <a class="text-gray-300" href="contact-us.html">Home</a>
+                </li>
+                <li class="list-inline-item px-3">
+                  <a class="text-gray-300" href="faq.html">FAQs</a>
+                </li>
+                <li class="list-inline-item px-3">
+                  <a class="text-gray-300" data-bs-toggle="modal" href="#modalSizeChart">Offers</a>
+                </li>
+                <li class="list-inline-item px-3">
+                  <a class="text-gray-300" href="shipping-and-returns.html">Contact Us</a>
+                </li>
+                <li class="list-inline-item px-3">
+                  <a class="text-gray-300" href="about.html">About us</a>
+                </li>
+              </ul>
+    
+              <!-- Links -->
+              <ul class="list-inline fs-lg">
+                <li class="list-inline-item">
+                  <a class="text-gray-300" href="#!">
+                    <i class="fab fa-facebook"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a class="text-gray-300" href="#!">
+                    <i class="fab fa-youtube"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a class="text-gray-300" href="#!">
+                    <i class="fab fa-twitter"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a class="text-gray-300" href="#!">
+                    <i class="fab fa-instagram"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a class="text-gray-300" href="#!">
+                    <i class="fab fa-medium"></i>
+                  </a>
+                </li>
+              </ul>
+    
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const products = [
+    { "id": 1,
+      "name": "Brown Sugar Cream Cold Brew", 
+      "Category":"Coffee",
+      "badge": "New",
+      "price": 200,
+      "offerPrice": 180,
+      "image": "assets/img/products/product-1.png",
+      "size" : "M",
+      "quantity" : 1
+    },
+
+    { "id": 2, 
+      "name": "Mocha Frappuccino", 
+      "Category":"Coffee",
+      "badge": "Offer",
+      "price": 500,
+      "offerPrice": 180,
+      "image": "assets/img/products/product-2.png",
+      "size" : "S",
+      "quantity" : 2
+    },
+
+    { "id": 3,
+      "name": "Cold Brew",
+      "Category":"Coffee",
+      "badge": false,
+      "price": 600,
+      "offerPrice": 180,
+      "image": "assets/img/products/product-3.png",
+      "size" : "L",
+      "quantity" : 3
+    }
+    ];
+  
+    let checkoutItems = [...products]; 
+    let totalPrice = 0;
+    let tax = 0;
+  
+    function renderCheckoutList() {
+      const checkoutList = document.querySelector('.checkout-list');
+      checkoutList.innerHTML = '';
+  
+      checkoutItems.forEach(item => {
+        const listItem = document.createElement('li');
+        listItem.classList.add('list-group-item');
+        listItem.innerHTML = `
+                <div class="row align-items-center">
+                  <div class="col-4">
+
+                    <!-- Image -->
+                    <a href="product.html">
+                      <img src="${item.image}" alt="..." class="img-fluid">
+                    </a>
+
+                  </div>
+                  <div class="col">
+
+                    <!-- Title -->
+                    <p class="mb-4 fs-sm fw-bold">
+                      <a class="text-body" href="product.html">${item.name}</a> <br>
+                      <span class="text-muted">රු ${item.price}.00</span>
+                    </p>
+
+                    <!-- Text -->
+                    <div class="fs-sm text-muted">
+                      Size: ${item.size} <br>
+                      Color: ${item.quantity}
+                    </div>
+
+                  </div>
+                </div>
+        `;
+        checkoutList.appendChild(listItem);
+        updateTotalPrice();
+      });
+  
+    }
+  
+    
+    function updateTotalPrice() {        
+      totalPrice = checkoutItems.reduce((total, item) => total + item.price, 0);
+      document.querySelector('.subtotal').textContent = `රු ${totalPrice}`;
+      tax = totalPrice * 0.05 ;
+      document.querySelector('.tax').textContent = `රු ${(tax)}`;
+      document.querySelector('.ChkectoutTotalPrice').textContent = `රු ${totalPrice + tax}` ;
+    }
+  
+    renderCheckoutList();
+    </script>
+    
+    <script src="assets/js/Cart.js"></script>
+    <script src="assets/js/Wishlist.js"></script>
+    <script src="assets/js/search.js"></script>
+    <script src="assets/js/search.js"></script>
+    <script src="assets/js/theme.bundle.js"></script>
+    <script src="assets/js/vendor.bundle.js"></script>
+
+  </body>
+</html>

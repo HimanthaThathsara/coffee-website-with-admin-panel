@@ -1,0 +1,734 @@
+<html lang="us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Title -->
+    <title>Coffee</title>
+
+    <!-- Libs CSS -->
+    <link rel="stylesheet" href="assets/css/libs.bundle.css" />
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="assets/css/theme.bundle.css" />
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  </head>
+  <body>
+    <!-- side Search -->
+    <div
+      class="offcanvas offcanvas-end"
+      id="modalSearch"
+      tabindex="-1"
+      role="dialog"
+      aria-hidden="true"
+    >
+      <!-- Close -->
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="offcanvas"
+        aria-label="Close"
+      >
+        <i class="btn-close-search bi bi-x-lg" aria-hidden="true"></i>
+      </button>
+
+      <!-- Header-->
+      <div class="offcanvas-header lh-fixed fs-lg">
+        <strong class="mx-auto">Search</strong>
+      </div>
+
+      <!-- Body: Form -->
+      <div class="offcanvas-body">
+        <form>
+          <div class="input-group input-group-merge">
+            <input class="nav-bar-search-input form-control" type="search" placeholder="Search" />
+            <div class="input-group-append">
+              <button class="btn-search-submit btn btn-outline-border" type="button" onclick="SearchInputSubmitButton()">
+                <img width="20" height="20" src="https://img.icons8.com/fluency-systems-regular/48/search--v1.png" alt="search--v1"/>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <!-- Body: Results (add `.d-none` to disable it) -->
+      <div class="offcanvas-body border-top fs-sm">
+        <p>Search Results:</p>
+          <div class="product-list-search offcanvas-body fs-sm">
+
+          </div>
+        <!-- Button -->
+        <a class="btn btn-link px-0 text-reset" href="shop.html">
+          View All <i class="bi bi-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- Shopping Cart -->
+    <div
+      class="offcanvas offcanvas-end"
+      id="modalShoppingCart"
+      tabindex="-1"
+      role="dialog"
+      aria-hidden="true"
+    >
+      <!-- Close -->
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="offcanvas"
+        aria-label="Close"
+      >
+        <i class="bi bi-x-lg" aria-hidden="true"></i>
+      </button>
+
+      <!-- Header-->
+      <div class="offcanvas-header lh-fixed fs-lg">
+        <strong class="mx-auto">Cart</strong>
+      </div>
+
+      <!-- List group -->
+      <ul class="list-group list-group-lg list-group-flush">
+      </ul>
+
+      <!-- Total -->
+      <div
+        class="offcanvas-footer justify-between lh-fixed fs-sm bg-light mt-auto"
+      >
+        <strong>Total</strong> 
+        <strong class="total-price ms-auto">
+          <!--Total-->
+          රු 0.00
+        </strong>
+      </div>
+
+      <!-- Buttons -->
+      <div class="offcanvas-body">
+        <a class="btn w-100 btn-dark" href="checkout.html"
+          >Continue to Checkout</a
+        >
+        <a class="btn w-100 btn-outline-dark mt-2" href="shopping-cart.html"
+          >View Cart</a
+        >
+      </div>
+
+      <!--' ADD TODO: Empty cart js if '-->
+      <!-- <div class="d-none">
+    
+
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close">
+          <i class="bi bi-x-lg" aria-hidden="true"></i>
+        </button>
+    
+
+        <div class="offcanvas-header lh-fixed fs-lg">
+          <strong class="mx-auto">Cart</strong>
+        </div>
+    
+
+        <div class="offcanvas-body flex-grow-0 my-auto">
+    
+
+          <h6 class="mb-7 text-center">cart is empty </h6>
+    
+
+          <a class="btn w-100 btn-outline-dark" href="#!">
+            Add Items
+          </a>
+    
+        </div>
+    
+      </div> -->
+    </div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
+      <div class="container">
+        <!-- Brand -->
+        <a class="navbar-brand" href="index.html"> Coffee </a>
+
+        <!-- Toggler -->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarCollapse"
+          aria-controls="navbarCollapse"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Collapse -->
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <!-- Nav -->
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item ">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+
+            <li class="nav-item dropdown">
+              <!-- Toggle -->
+              <a class="nav-link" data-bs-toggle="dropdown" href="shop.html"
+                >Shop</a
+              >
+
+              <!-- Menu -->
+              <div class="dropdown-menu" style="min-width: 650px">
+                <div class="card card-lg">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col">
+                        <!-- Heading -->
+                        <div class="mb-5 fw-bold">Coffee</div>
+                        <!-- Links -->
+                        <ul class="list-styled mb-7 fs-sm">
+                          <li class="list-styled-item">
+                            <a class="list-styled-link" href="shop.html"
+                              >All Collections</a
+                            >
+                          </li>
+                          <li class="list-styled-item">
+                            <a class="list-styled-link" href="shop.html"
+                              >New Arrived</a
+                            >
+                          </li>
+                          <li class="list-styled-item">
+                            <a class="list-styled-link" href="shop.html"
+                              >Special Offers</a
+                            >
+                          </li>
+                          <li class="list-styled-item">
+                            <a class="list-styled-link" href="shop.html"
+                              >Tack Away</a
+                            >
+                          </li>
+                          <li class="list-styled-item">
+                            <a class="list-styled-link" href="shop.html"
+                              >Holiday Special</a
+                            >
+                          </li>
+                        </ul>
+                      </div>
+
+                      <div class="col">
+                        <!-- Heading -->
+                        <div class="mb-5 fw-bold">Ice Cream</div>
+                        <!-- Links -->
+                        <ul class="list-styled mb-7 fs-sm">
+                          <li class="list-styled-item">
+                            <a class="list-styled-link" href="shop.html"
+                              >All Collections</a
+                            >
+                          </li>
+                          <li class="list-styled-item">
+                            <a class="list-styled-link" href="shop.html"
+                              >Tack Away</a
+                            >
+                          </li>
+                          <li class="list-styled-item">
+                            <a class="list-styled-link" href="shop.html"
+                              >Holiday Special</a
+                            >
+                          </li>
+                        </ul>
+                      </div>
+
+                      <div class="col">
+                        <!-- Heading -->
+                        <div class="mb-5 fw-bold">Food</div>
+
+                        <!-- Links -->
+                        <ul class="list-styled mb-7 fs-sm">
+                          <li class="list-styled-item">
+                            <a class="list-styled-link" href="shop.html"
+                              >All Collections</a
+                            >
+                          </li>
+                          <li class="list-styled-item">
+                            <a class="list-styled-link" href="shop.html"
+                              >Tack Away</a
+                            >
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <li class="nav-item ">
+              <!-- Toggle -->
+              <a class="nav-link" href="about.html">About</a>
+            </li>
+
+            <li class="nav-item dropdown">
+              <!-- Toggle -->
+              <a class="nav-link" data-bs-toggle="dropdown" href="#">Helps</a>
+
+              <!-- Menu -->
+              <div class="dropdown-menu">
+                <div class="card card-lg">
+                  <div class="card-body">
+                    <ul class="list-styled fs-sm">
+                      <li class="list-styled-item">
+                        <a class="list-styled-link" href="contact-us.html">contact-Us</a>
+                      </li>
+                      <li class="list-styled-item">
+                        <a class="list-styled-link" href="faq.html">FAQ</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <li class="nav-item ">
+              <!-- Toggle -->
+              <a class="nav-link" href="blog.html">Blog</a>
+            </li>
+
+          </ul>
+
+          <!-- Nav -->
+          <ul class="navbar-nav flex-row">
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                data-bs-toggle="offcanvas"
+                href="#modalSearch"
+              >
+                <img width="20" height="20" src="https://img.icons8.com/fluency-systems-regular/48/search--v1.png" alt="search--v1"/>
+              </a>
+            </li>
+
+            <li class="nav-item ms-lg-n4">
+              <a class="nav-link" href="account-personal-info.html">
+              <img width="20" height="20" src="https://img.icons8.com/fluency-systems-regular/48/user--v1.png" alt="user--v1"/>
+              </a>
+            </li>
+
+            <li class="nav-item ms-lg-n4">
+              <a class="nav-link" href="account-wishlist.html">
+                <img width="20" height="20" src="https://img.icons8.com/fluency-systems-regular/48/like--v1.png" alt="like--v1"/>
+              </a>
+            </li>
+
+            <li class="nav-item ms-lg-n4">
+              <a
+                class="nav-link"
+                data-bs-toggle="offcanvas"
+                href="#modalShoppingCart"
+              >
+              <span class="cartItemInNav" data-cart-items="0">
+                <img width="20" height="20" src="https://img.icons8.com/fluency-systems-regular/48/shopping-cart--v1.png" alt="shopping-cart--v1"/>
+              </span>
+              </a>
+            </li>
+          </ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <!-- CONTENT -->
+    <section class="py-11">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 col-md-8 col-lg-12">
+
+            <!-- Slider -->
+            <div class="flickity-page-dots-inner mb-9" data-flickity='{"pageDots": true}'>
+
+              <!-- Item -->
+              <div class="w-100">
+                <div class="card bg-cover" style="background-image: url(assets/img/www_pinterest_com/61.png);">
+                  <div class="row align-items-center" style="min-height: 400px;">
+                    <div class="col-12">
+                      <div class="card-body px-md-10 py-11 text-center text-white">
+
+                        <!-- Preheading -->
+                        <p class="text-uppercase">ENJOY AN EXTRA</p>
+
+                        <!-- Heading -->
+                        <h1 class="display-4 text-uppercase">50% OFF</h1>
+
+                        <!-- Link -->
+                        <a class="link-underline text-reset" href="shop.html">Shop Now</a>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Item -->
+              <div class="w-100">
+                <div class="card bg-cover" style="background-image: url(https://cdn.shopify.com/s/files/1/0271/1558/5622/files/SFB_LFS_HolidayDrinks_blog_1024x1024.jpg?v=1701889309  )">
+                  <div class="row align-items-center" style="min-height: 400px;">
+                    <div class="col-12 col-md-10 col-lg-8 col-xl-6">
+                      <div class="card-body px-md-10 py-11">
+
+                        <!-- Heading -->
+                        <h4 class="mb-5 text-white">GET 40% FOR 3 IN 1 PACK</h4>
+
+                        <!-- Text -->
+                        <p class="mb-7 text-white">
+                          TRY OUT NEW THINGS, THAT WILL CHANGE YOUR LIFE <br>
+                          <strong class="text-dark">Use code <span class="text-white">4GF5SD</span></strong>
+                        </p>
+
+                        <!-- Button -->
+                        <a class="btn btn-outline-dark" href="shop.html">
+                          Shop Now <i class="bi bi-arrow-right"></i>
+                        </a>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Item -->
+              <div class="w-100">
+                <div class="card bg-cover" style="background-image: url(assets/img/www_pinterest_com/56.jpg)">
+                  <div class="row align-items-center" style="min-height: 400px;">
+                    <div class="col-12 col-md-10 col-lg-8 col-xl-6">
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+            </div>
+
+            <!-- Header -->
+            <div class="row align-items-center mb-7">
+              <div class="col-12 col-md">
+
+                <!-- Heading -->
+                <h3 class="mb-1">Coffee & Food</h3>
+
+              </div>
+
+              <div class="col-12 col-md-auto">
+
+                <!-- Select -->
+                <div class="col-12 col-md-auto text-center">
+
+                  <!-- Filter -->
+                  <a class="text-body" data-bs-toggle="collapse" href="#collapseFilter" role="button">
+                    <img width="16" height="16" src="https://img.icons8.com/fluency-systems-regular/48/list--v1.png" alt="list--v1"/>      Filter
+                  </a>
+      
+                  <!-- Sort -->
+                  <div class="dropdown ms-6">
+      
+                    <!-- Toggle -->
+                    <a class="text-body" data-bs-toggle="dropdown" href="#">
+                      Default <i class="bi bi-chevron-down"></i>
+                    </a>
+      
+                    <!-- Menu -->
+                    <form class="dropdown-menu">
+                      <div class="card">
+                        <div class="card-body">
+      
+                          <!-- Form group -->
+                          <div class="form-group-overflow">
+                            <div class="form-check form-check-text mb-3">
+                              <input class="form-check-input" id="sortOne" name="sort" type="radio" value="Default">
+                              <label class="form-check-label" for="sortOne">Default</label>
+                            </div>
+                            <div class="form-check form-check-text mb-3">
+                              <input class="form-check-input" id="sortTwo" name="sort" type="radio" value="Newest">
+                              <label class="form-check-label" for="sortTwo">Newest</label>
+                            </div>
+                            <div class="form-check form-check-text mb-3">
+                              <input class="form-check-input" id="sortThree" name="sort" type="radio" value="Most Popular">
+                              <label class="form-check-label" for="sortThree">Most Popular</label>
+                            </div>
+                            <div class="form-check form-check-text mb-3">
+                              <input class="form-check-input" id="sortFour" name="sort" type="radio" value="Default Price">
+                              <label class="form-check-label" for="sortFour">Default Price</label>
+                            </div>
+                            <div class="form-check form-check-text">
+                              <input class="form-check-input" id="sortFive" name="sort" type="radio" value="Highest Price">
+                              <label class="form-check-label" for="sortFive">Highest Price</label>
+                            </div>
+                          </div>
+      
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+      
+                </div>  
+              </div>
+            </div>
+
+            <!-- FILTERS (collapse) -->
+            <section class="collapse" id="collapseFilter">
+              <form class="py-7 border-bottom">
+                <div class="container">
+                  <div class="row">
+
+                    <div class="col-12 col-md-3">
+
+                      <!-- Heading -->
+                      <p class="fs-lg">
+                        <strong>products:</strong>
+                      </p>
+
+                      <!-- Form group -->
+                      <div class="form-group form-group-overflow mb-md-0">
+                        <div class="form-check mb-3">
+                          <input class="form-check-input" id="coffee" name="category" type="checkbox" value="coffee">
+                          <label class="form-check-label" for="coffee">COFFEE</label>
+                        </div>
+                        <div class="form-check mb-3">
+                          <input class="form-check-input" id="Food" name="category" type="checkbox" value="Food">
+                          <label class="form-check-label" for="Food">FOOD</label>
+                        </div>
+                      </div>
+
+                    </div>
+
+                    <div class="col-12 col-md-3">
+
+                      <!-- Heading -->
+                      <p class="fs-lg">
+                        <strong>Size:</strong>
+                      </p>
+
+                      <!-- Form group -->
+                      <div class="form-group form-group-overflow mb-md-0" style="margin-right: 100px;">
+                        <div class="form-check form-check-inline form-check-size mb-2">
+                          <input class="form-check-input" id="S" name="size" type="checkbox"  value="S">
+                          <label class="form-check-label" for="S">
+                            S
+                          </label>
+                        </div>
+                        <div class="form-check form-check-inline form-check-size mb-2">
+                          <input class="form-check-input" id="M" name="size" type="checkbox"  value="M">
+                          <label class="form-check-label" for="M">
+                            M
+                          </label>
+                        </div>
+                        <div class="form-check form-check-inline form-check-size mb-2">
+                          <input class="form-check-input" id="L" name="size" type="checkbox"  value="L">
+                          <label class="form-check-label" for="L">
+                            L
+                          </label>
+                        </div>
+                        <div class="form-check form-check-inline form-check-size mb-2">
+                          <input class="form-check-input" id="XL" name="size" type="checkbox" value="XL">
+                          <label class="form-check-label" for="XL">
+                            XL
+                          </label>
+                        </div>
+                      </div>
+
+                    </div>
+
+                    <div class="col-12 col-md-3">
+
+                      <!-- Heading -->
+                      <p class="fs-lg">
+                        <strong>Price:</strong>
+                      </p>
+
+                      <!-- Form group-->
+                      <div class="form-group form-group-overflow mb-6" id="priceGroup">
+                        <div class="form-check mb-3">
+                          <input class="form-check-input" id="priceOne" name="price" type="checkbox" value = 100-200 >
+                          <label class="form-check-label" for="priceOne">
+                            රු 100.00 - රු 200.00
+                          </label>
+                        </div>
+                        <div class="form-check mb-3">
+                          <input class="form-check-input" id="priceTwo" name="price" type="checkbox" value = 200-300>
+                          <label class="form-check-label" for="priceTwo">
+                            රු200.00 - රු300.00
+                          </label>
+                        </div>
+                        <div class="form-check mb-3">
+                          <input class="form-check-input" id="priceThree" name="price" type="checkbox" value = 300-400>
+                          <label class="form-check-label" for="priceThree">
+                            රු300.00 - රු400.00
+                          </label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" id="priceFour" name="price" type="checkbox" value = 400-500>
+                          <label class="form-check-label" for="priceFour">
+                            රු400.00 and Up
+                          </label>
+                        </div>
+                      </div>
+
+                    </div>
+
+                  </div>
+                </div>
+              </form>
+            </section>
+
+            <!-- TOP SELLERS -->
+            <section class="py-12">
+              <div class="container">
+                <div class="row justify-content-center">
+                  <div class="col-12 col-md-10 col-lg-8 col-xl-6">
+                    <!-- Heading -->
+                    <h2 class="mb-4 text-center">MOST SELLS IN MONTH</h2>
+
+                    <!-- Nav -->
+                    <div class="nav justify-content-center mb-10">
+                      <a
+                        class="nav-link active"
+                        href="#topSellersTabCoffee"
+                        data-bs-toggle="tab"
+                        >COFFEE</a
+                      >
+                      <a class="nav-link" href="#topSellersTabFood" data-bs-toggle="tab"
+                        >FOOD</a
+                      >
+                    </div>
+                  </div>
+                </div>
+
+                <div class="tab-content">
+                  <div class="tab-pane fade show active" id="topSellersTabCoffee">
+                    <div class="row product-list">
+                         <!-- Card -->
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-12">
+                    <div class="mt-7 text-center">
+                      <a class="link-underline" href="shop.html">Discover more</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- Pagenumbers -->
+            <nav class="d-flex justify-content-center justify-content">
+              <ul class="pagination pagination-sm text-gray-400">
+                <li class="page-item">
+                  <a class="page-link page-link-arrow" href="#">
+                    <i class="fa fa-caret-left"></i>
+                  </a>
+                </li>
+                <li class="page-item active">
+                  <a class="page-link" href="#">1</a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link" href="#">2</a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link" href="#">3</a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link" href="#">4</a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link" href="#">5</a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link" href="#">6</a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link page-link-arrow" href="#">
+                    <i class="fa fa-caret-right"></i>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--Footer-->
+    <footer class="">
+      <div class="py-12 bg-dark bg-cover text-center" style="background-image: url(assets/img/patterns/pattern-2.svg)">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+    
+              <!-- Brand -->
+              <h2 class="mb-7 text-white">Coffee.</h2>
+    
+              <!-- Links -->
+              <ul class="list-inline mb-7">
+                <li class="list-inline-item px-3">
+                  <a class="text-gray-300" href="contact-us.html">Home</a>
+                </li>
+                <li class="list-inline-item px-3">
+                  <a class="text-gray-300" href="faq.html">FAQs</a>
+                </li>
+                <li class="list-inline-item px-3">
+                  <a class="text-gray-300" data-bs-toggle="modal" href="#modalSizeChart">Offers</a>
+                </li>
+                <li class="list-inline-item px-3">
+                  <a class="text-gray-300" href="shipping-and-returns.html">Contact Us</a>
+                </li>
+                <li class="list-inline-item px-3">
+                  <a class="text-gray-300" href="about.html">About us</a>
+                </li>
+              </ul>
+    
+              <!-- Links -->
+              <ul class="list-inline fs-lg">
+                <li class="list-inline-item">
+                  <a class="text-gray-300" href="#!">
+                    <i class="fab fa-facebook"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a class="text-gray-300" href="#!">
+                    <i class="fab fa-youtube"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a class="text-gray-300" href="#!">
+                    <i class="fab fa-twitter"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a class="text-gray-300" href="#!">
+                    <i class="fab fa-instagram"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a class="text-gray-300" href="#!">
+                    <i class="fab fa-medium"></i>
+                  </a>
+                </li>
+              </ul>
+    
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+
+<script src="assets/js/Fillter.js"></script>
+<script src="assets/js/Product.js"></script>
+<script src="assets/js/Cart.js"></script>
+<script src="assets/js/search.js"></script>
+<script src="assets/js/theme.bundle.js"></script>
+<script src="assets/js/vendor.bundle.js"></script>
+  </body>
+
+
+</html>

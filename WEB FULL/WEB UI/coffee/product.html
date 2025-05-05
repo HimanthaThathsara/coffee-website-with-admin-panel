@@ -1,0 +1,685 @@
+<html lang="us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Title -->
+    <title>Coffee</title>
+
+    <!-- Libs CSS -->
+    <link rel="stylesheet" href="assets/css/libs.bundle.css" />
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="assets/css/theme.bundle.css" />
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  </head>
+  <body>
+    <!-- side Search -->
+    <div
+      class="offcanvas offcanvas-end"
+      id="modalSearch"
+      tabindex="-1"
+      role="dialog"
+      aria-hidden="true"
+    >
+      <!-- Close -->
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="offcanvas"
+        aria-label="Close"
+      >
+        <i class="btn-close-search bi bi-x-lg" aria-hidden="true"></i>
+      </button>
+
+      <!-- Header-->
+      <div class="offcanvas-header lh-fixed fs-lg">
+        <strong class="mx-auto">Search</strong>
+      </div>
+
+      <!-- Body: Form -->
+      <div class="offcanvas-body">
+        <form>
+          <div class="input-group input-group-merge">
+            <input class="nav-bar-search-input form-control" type="search" placeholder="Search" />
+            <div class="input-group-append">
+              <button class="btn-search-submit btn btn-outline-border" type="button" onclick="SearchInputSubmitButton()">
+                <img width="20" height="20" src="https://img.icons8.com/fluency-systems-regular/48/search--v1.png" alt="search--v1"/>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <!-- Body: Results (add `.d-none` to disable it) -->
+      <div class="offcanvas-body border-top fs-sm">
+        <p>Search Results:</p>
+          <div class="product-list-search offcanvas-body fs-sm">
+
+          </div>
+        <!-- Button -->
+        <a class="btn btn-link px-0 text-reset" href="shop.html">
+          View All <i class="bi bi-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- Shopping Cart -->
+    <div
+      class="offcanvas offcanvas-end"
+      id="modalShoppingCart"
+      tabindex="-1"
+      role="dialog"
+      aria-hidden="true"
+    >
+      <!-- Close -->
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="offcanvas"
+        aria-label="Close"
+      >
+        <i class="bi bi-x-lg" aria-hidden="true"></i>
+      </button>
+
+      <!-- Header-->
+      <div class="offcanvas-header lh-fixed fs-lg">
+        <strong class="mx-auto">Cart</strong>
+      </div>
+
+      <!-- List group -->
+      <ul class="list-group list-group-lg list-group-flush">
+      </ul>
+
+      <!-- Total -->
+      <div
+        class="offcanvas-footer justify-between lh-fixed fs-sm bg-light mt-auto"
+      >
+        <strong>Total</strong> 
+        <strong class="total-price ms-auto">
+          <!--Total-->
+          රු 0.00
+        </strong>
+      </div>
+
+      <!-- Buttons -->
+      <div class="offcanvas-body">
+        <a class="btn w-100 btn-dark" href="checkout.html"
+          >Continue to Checkout</a
+        >
+        <a class="btn w-100 btn-outline-dark mt-2" href="shopping-cart.html"
+          >View Cart</a
+        >
+      </div>
+
+      <!--' ADD TODO: Empty cart js if '-->
+      <!-- <div class="d-none">
+    
+
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close">
+          <i class="bi bi-x-lg" aria-hidden="true"></i>
+        </button>
+    
+
+        <div class="offcanvas-header lh-fixed fs-lg">
+          <strong class="mx-auto">Cart</strong>
+        </div>
+    
+
+        <div class="offcanvas-body flex-grow-0 my-auto">
+    
+
+          <h6 class="mb-7 text-center">cart is empty </h6>
+    
+
+          <a class="btn w-100 btn-outline-dark" href="#!">
+            Add Items
+          </a>
+    
+        </div>
+    
+      </div> -->
+    </div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
+        <div class="container">
+          <!-- Brand -->
+          <a class="navbar-brand" href="index.html"> Coffee </a>
+  
+          <!-- Toggler -->
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarCollapse"
+            aria-controls="navbarCollapse"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+  
+          <!-- Collapse -->
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <!-- Nav -->
+            <ul class="navbar-nav mx-auto">
+              <li class="nav-item ">
+                <a class="nav-link" href="index.html">Home</a>
+              </li>
+  
+              <li class="nav-item dropdown">
+                <!-- Toggle -->
+                <a class="nav-link" data-bs-toggle="dropdown" href="shop.html"
+                  >Shop</a
+                >
+  
+                <!-- Menu -->
+                <div class="dropdown-menu" style="min-width: 650px">
+                  <div class="card card-lg">
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col">
+                          <!-- Heading -->
+                          <div class="mb-5 fw-bold">Coffee</div>
+                          <!-- Links -->
+                          <ul class="list-styled mb-7 fs-sm">
+                            <li class="list-styled-item">
+                              <a class="list-styled-link" href="shop.html"
+                                >All Collections</a
+                              >
+                            </li>
+                            <li class="list-styled-item">
+                              <a class="list-styled-link" href="shop.html"
+                                >New Arrived</a
+                              >
+                            </li>
+                            <li class="list-styled-item">
+                              <a class="list-styled-link" href="shop.html"
+                                >Special Offers</a
+                              >
+                            </li>
+                            <li class="list-styled-item">
+                              <a class="list-styled-link" href="shop.html"
+                                >Tack Away</a
+                              >
+                            </li>
+                            <li class="list-styled-item">
+                              <a class="list-styled-link" href="shop.html"
+                                >Holiday Special</a
+                              >
+                            </li>
+                          </ul>
+                        </div>
+  
+                        <div class="col">
+                          <!-- Heading -->
+                          <div class="mb-5 fw-bold">Ice Cream</div>
+                          <!-- Links -->
+                          <ul class="list-styled mb-7 fs-sm">
+                            <li class="list-styled-item">
+                              <a class="list-styled-link" href="shop.html"
+                                >All Collections</a
+                              >
+                            </li>
+                            <li class="list-styled-item">
+                              <a class="list-styled-link" href="shop.html"
+                                >Tack Away</a
+                              >
+                            </li>
+                            <li class="list-styled-item">
+                              <a class="list-styled-link" href="shop.html"
+                                >Holiday Special</a
+                              >
+                            </li>
+                          </ul>
+                        </div>
+  
+                        <div class="col">
+                          <!-- Heading -->
+                          <div class="mb-5 fw-bold">Food</div>
+  
+                          <!-- Links -->
+                          <ul class="list-styled mb-7 fs-sm">
+                            <li class="list-styled-item">
+                              <a class="list-styled-link" href="shop.html"
+                                >All Collections</a
+                              >
+                            </li>
+                            <li class="list-styled-item">
+                              <a class="list-styled-link" href="shop.html"
+                                >Tack Away</a
+                              >
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+  
+              <li class="nav-item ">
+                <!-- Toggle -->
+                <a class="nav-link" href="about.html">About</a>
+              </li>
+  
+              <li class="nav-item dropdown">
+                <!-- Toggle -->
+                <a class="nav-link" data-bs-toggle="dropdown" href="#">Helps</a>
+  
+                <!-- Menu -->
+                <div class="dropdown-menu">
+                  <div class="card card-lg">
+                    <div class="card-body">
+                      <ul class="list-styled fs-sm">
+                        <li class="list-styled-item">
+                          <a class="list-styled-link" href="contact-us.html">contact-Us</a>
+                        </li>
+                        <li class="list-styled-item">
+                          <a class="list-styled-link" href="faq.html">FAQ</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </li>
+  
+              <li class="nav-item ">
+                <!-- Toggle -->
+                <a class="nav-link" href="blog.html">Blog</a>
+              </li>
+  
+            </ul>
+  
+            <!-- Nav -->
+            <ul class="navbar-nav flex-row">
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  data-bs-toggle="offcanvas"
+                  href="#modalSearch"
+                >
+                  <img width="20" height="20" src="https://img.icons8.com/fluency-systems-regular/48/search--v1.png" alt="search--v1"/>
+                </a>
+              </li>
+  
+              <li class="nav-item ms-lg-n4">
+                <a class="nav-link" href="account-personal-info.html">
+                <img width="20" height="20" src="https://img.icons8.com/fluency-systems-regular/48/user--v1.png" alt="user--v1"/>
+                </a>
+              </li>
+  
+              <li class="nav-item ms-lg-n4">
+                <a class="nav-link" href="account-wishlist.html">
+                  <img width="20" height="20" src="https://img.icons8.com/fluency-systems-regular/48/like--v1.png" alt="like--v1"/>
+                </a>
+              </li>
+  
+              <li class="nav-item ms-lg-n4">
+                <a
+                  class="nav-link"
+                  data-bs-toggle="offcanvas"
+                  href="#modalShoppingCart"
+                >
+                <span class="cartItemInNav" data-cart-items="0">
+                  <img width="20" height="20" src="https://img.icons8.com/fluency-systems-regular/48/shopping-cart--v1.png" alt="shopping-cart--v1"/>
+                </span>
+                </a>
+              </li>
+            </ul>
+  
+          </div>
+        </div>
+    </nav>
+  
+
+    <!-- PRODUCT -->
+    <section class="mt-7">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="row">
+                  <div class="col-12 col-md-6">
+
+                    <!-- Images -->
+                    <div class="row gx-5 mb-10 mb-md-0">
+
+                      <div class="col-2">
+                        <!-- Slider -->
+                        <div class="flickity-nav flickity-vertical">
+
+                          <!-- Item -->
+                          <div class="ratio ratio-1x1 bg-cover mb-4" style="background-image: url(assets/img/products/product-20.png);"></div>
+
+
+                        </div>
+                      </div>
+
+                      <div class="col-10">
+
+                        <!-- Card -->
+                        <div class="card">
+
+                          <!-- Badge -->
+                          <div class="badge bg-secondary card-badge card-badge-end text-uppercase">
+                            In Stock
+                          </div>
+
+                          <!-- Slider -->
+                          <div id="productSlider">
+
+                            <!-- Item -->
+                            <a href="#">
+                              <img src="assets/img/products/product-20.png" alt="..." class="card-img-top">
+                            </a>
+
+                          </div>
+
+                        </div>
+
+                      </div>
+
+                    </div>
+
+                  </div>
+                  <div class="col-12 col-md-6 ps-lg-10">
+
+                      <!-- Header -->
+                      <div class="row mb-1">
+                        <div class="col">
+
+                          <!-- Preheading -->
+                          <a class="text-muted" href="shop.html">Coffee</a>
+
+                        </div>
+                      </div>
+
+                      <!-- Heading -->
+                      <h3 class="mb-0">Coffee With Arment</h3>
+
+                      <!-- Price -->
+                      <div class="mb-7 text-gray-400">
+                        <span class="ProoductPrice ms-1 fs-5 fw-bold">රු 300.00</span>
+                        <span class="ms-1 fs-sm mb-4">(In Stock)</span>
+                        <div class="col-auto">
+
+                          <!-- Rating -->
+                          <div class="rating fs-xs text-dark">
+                            <div class="rating-item">
+                              <i class="fas fa-star"></i>
+                            </div>
+                            <div class="rating-item">
+                              <i class="fas fa-star"></i>
+                            </div>
+                            <div class="rating-item">
+                              <i class="fas fa-star"></i>
+                            </div>
+                            <div class="rating-item">
+                              <i class="fas fa-star"></i>
+                            </div>
+                            <div class="rating-item">
+                              <i class="fas fa-star"></i>
+                            </div>
+                          </div>
+
+                          <a class="fs-sm text-reset ms-2" href="#reviews">
+                            Reviews (0)
+                          </a>
+
+                        </div>
+                      </div>
+
+                      <!-- Form -->
+                      <form>
+                        <div class="form-group">
+
+                          <!-- Label -->
+                          <p class="mb-4">
+                            Size: <strong><span id="sizeCaption">Choose size</span></strong> </strong>
+                          </p>
+
+                          <!-- Radio -->
+                          <div class="mb-8 ms-n1">
+                            <div class="form-check form-check-inline form-check-img">
+                              <input type="radio" class="form-check-input" id="sizeCaption" name="sizeRadio" value=" Small" style="background-image: url(assets/img/www_pinterest_com/svgviewer-png-output.png); background-size: 1.5em; background-color: transparent;" >
+                            </div>
+
+                            <div class="form-check form-check-inline form-check-img">
+                              <input type="radio" class="form-check-input" id="sizeCaption" name="sizeRadio" value=" Medium" style="background-image: url(assets/img/www_pinterest_com/svgviewer-png-output2.png); background-size: 1.5em; background-color: transparent;" >
+                            </div>
+
+                            <div class="form-check form-check-inline form-check-img">
+                              <input type="radio" class="form-check-input" id="sizeCaption" name="sizeRadio" value="Large" style="background-image: url(assets/img/www_pinterest_com/svgviewer-png-output3.png); background-size: 1.5em; background-color: transparent;">
+                            </div>
+
+                            <div class="form-check form-check-inline form-check-img">
+                              <input type="radio" class="form-check-input" id="sizeCaption" name="sizeRadio" value="Extra-Large" style="background-image: url(assets/img/www_pinterest_com/svgviewer-png-output4.png); background-size: 1.5em; background-color: transparent;" >
+                            </div>  
+                          </div>
+
+                        </div>
+
+                        <div class="form-group">
+
+                          <div class="row gx-5 mb-7">
+                            <div class="col-12 col-lg-auto">
+
+                              <!-- Submit -->
+                              <button class="btn w-100 btn-dark mb-2" data-toggle="button">
+                                <a href="checkout.html" class="text-white  ms-2">
+                                   $ Buy Now
+                                </a>
+                              </button>
+
+                            </div>
+                            <div class="col-12 col-lg-auto">
+
+                              <!-- Wishlist -->
+                              <button class="btn btn-outline-dark w-100 mb-2" data-toggle="button">
+                                Wishlist <i class="bi bi-heart ms-2"></i>
+                              </button>
+
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+
+                  </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DESCRIPTION -->
+    <section class="pt-11">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+
+            <!-- Nav -->
+            <div class="nav nav-tabs nav-overflow justify-content-start justify-content-md-center border-bottom">
+              <a class="nav-link active" data-bs-toggle="tab" href="#descriptionTab">
+                Description
+              </a>
+              <a class="nav-link" data-bs-toggle="tab" href="#IngredientsTab">
+                Ingredients
+              </a>
+            </div>
+
+            <!-- Content -->
+            <div class="tab-content">
+              <div class="tab-pane fade show active" id="descriptionTab">
+                <div class="row justify-content-center py-9">
+                  <div class="col-12 col-lg-10 col-xl-8">
+                    <div class="row">
+                      <div class="col-12">
+
+                        <!-- Text -->
+                        <p class="text-gray-500">
+                          Buttery caramel syrup blended with milk and ice creates a base that is rich, sweet, and intensely caramel-flavored. The addition of dark caramel sauce provides an even deeper caramel taste with a hint of bitterness that cuts through the sweetness. Whipped cream adds a light and creamy element, while the caramel drizzle offers an extra touch of sweetness and a decorative flair.
+                        </p>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tab-pane fade" id="IngredientsTab">
+                <div class="row justify-content-center py-9">
+                  <div class="col-12 col-lg-10 col-xl-8">
+                    <div class="row">
+
+                      <div class="col-12">
+
+                        <!-- Text -->
+                        <p class="text-gray-500">
+                          <h6>Ingredients</h6>
+                          <ul>
+                            <li>Milk</li>
+                            <li>Whipped Cream Frappuccino Cream Base</li>
+                            <li>Caramel Drink Base (dairy)</li>
+                            <li>Sugar Cane Syrup</li>
+                          </ul>
+
+                        <h6>Allergens</h6>
+                        <ul>
+                          <li>Dairy</li>
+                          <li>Soy</li>
+                          <li>Served Iced</li>
+                        </ul> 
+
+                        <h6>Nutrition Information</h6>
+                        <ul>
+                          <li>16 fl oz cup</li>
+                          <li>Total Fat  11.8g</li>
+                          <li>Saturated Fat
+                            7.3g</li>
+                          <li>Trans Fat
+                            0.4g</li>
+                          <li>Cholesterol
+                            37mg</li>
+                        </ul>
+                        
+                        </p>
+
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUCTS -->
+    <section class="py-12">
+      <div class="container">
+
+        <div class="row justify-content-center">
+          <div class="col-12 col-md-10 col-lg-8 col-xl-6">
+
+            <!-- Heading -->
+            <h2 class="mb-4 text-center">You might also like</h2>
+
+          </div>
+        </div>
+
+        <div class="tab-content">
+          <div class="tab-pane fade show active" id="topSellersTabCoffee">
+            <div class="product-list-sell row">
+
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!--Footer-->
+    <footer class="">
+      <div class="py-12 bg-dark bg-cover text-center" style="background-image: url(assets/img/patterns/pattern-2.svg)">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+    
+              <!-- Brand -->
+              <h2 class="mb-7 text-white">Coffee.</h2>
+    
+              <!-- Links -->
+              <ul class="list-inline mb-7">
+                <li class="list-inline-item px-3">
+                  <a class="text-gray-300" href="contact-us.html">Home</a>
+                </li>
+                <li class="list-inline-item px-3">
+                  <a class="text-gray-300" href="faq.html">FAQs</a>
+                </li>
+                <li class="list-inline-item px-3">
+                  <a class="text-gray-300" data-bs-toggle="modal" href="#modalSizeChart">Offers</a>
+                </li>
+                <li class="list-inline-item px-3">
+                  <a class="text-gray-300" href="shipping-and-returns.html">Contact Us</a>
+                </li>
+                <li class="list-inline-item px-3">
+                  <a class="text-gray-300" href="about.html">About us</a>
+                </li>
+              </ul>
+    
+              <!-- Links -->
+              <ul class="list-inline fs-lg">
+                <li class="list-inline-item">
+                  <a class="text-gray-300" href="#!">
+                    <i class="fab fa-facebook"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a class="text-gray-300" href="#!">
+                    <i class="fab fa-youtube"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a class="text-gray-300" href="#!">
+                    <i class="fab fa-twitter"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a class="text-gray-300" href="#!">
+                    <i class="fab fa-instagram"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a class="text-gray-300" href="#!">
+                    <i class="fab fa-medium"></i>
+                  </a>
+                </li>
+              </ul>
+    
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    
+    <script>
+
+    </script>
+
+    <script src="assets/js/Cart.js"></script>
+    <script src="assets/js/productview.js"></script>
+    <script src="assets/js/search.js"></script>
+    <script src="assets/js/theme.bundle.js"></script>
+    <script src="assets/js/vendor.bundle.js"></script>
+
+  </body>
+
+</html>

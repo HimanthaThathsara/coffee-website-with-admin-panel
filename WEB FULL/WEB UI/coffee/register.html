@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="assets/css/libs.bundle.css" />
+    <link rel="stylesheet" href="assets/css/theme.bundle.css" />
+
+    <title>Login Coffee</title>
+  </head>
+  <body class="bg-light d-flex align-items-center justify-content-center min-vh-100">
+
+
+    <!-- Password Reset -->
+    <div class="modal fade" id="modalPasswordReset" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+    
+          <!-- Close -->
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+            <i class="bi bi-x-lg" aria-hidden="true"></i>
+          </button>
+    
+          <!-- Header-->
+          <div class="modal-header lh-fixed fs-lg">
+            <strong class="mx-auto">Forgot Password?</strong>
+          </div>
+    
+          <!-- Body -->
+          <div class="modal-body text-center">
+    
+            <!-- Text -->
+            <p class="mb-7 fs-sm text-gray-500">
+              Please enter your Email Address. You will receive a link
+              to create a new password via Email.
+            </p>
+    
+            <!-- Form -->
+            <form>
+    
+              <!-- Email -->
+              <div class="form-group">
+                <label class="visually-hidden" for="modalPasswordResetEmail">
+                  Email Address *
+                </label>
+                <input class="form-control form-control-sm" id="modalPasswordResetEmail" type="email" placeholder="Email Address *" required>
+              </div>
+    
+              <!-- Button -->
+              <button class="btn btn-sm btn-dark">
+                Reset Password
+              </button>
+    
+            </form>
+    
+          </div>
+    
+        </div>
+    
+      </div>
+    </div>
+
+
+    <!-- CONTENT -->
+    <section>
+      <div class="container d-flex align-items-center justify-content-center min-vh-100">
+        <div class="row justify-content-center">
+
+            <div class="col-12 col-md-6">
+
+                <!-- Card -->
+                <div class="card card-lg">
+                  <div class="card-body">
+            
+                <!-- Heading -->
+                <div class="modal-header lh-fixed fs-lg">
+                    <h6 class="mx-auto">WELCOME</h6>
+                </div>
+            
+                    <!-- Form -->
+                    <form>
+                      <div class="row">
+                        <div class="col-12">
+            
+                          <!-- Email -->
+                          <div class="form-group">
+                            <label class="visually-hidden" for="registerFirstName">
+                              First Name *
+                            </label>
+                            <input class="form-control form-control-sm" id="registerFirstName" type="text" placeholder="First Name" required>
+                          </div>
+            
+                        </div>
+                        <div class="col-12">
+            
+                          <!-- Email -->
+                          <div class="form-group">
+                            <label class="visually-hidden" for="registerLastName">
+                              Last Name *
+                            </label>
+                            <input class="form-control form-control-sm" id="registerLastName" type="text" placeholder="Last Name" required>
+                          </div>
+            
+                        </div>
+                        <div class="col-12">
+            
+                          <!-- Email -->
+                          <div class="form-group">
+                            <label class="visually-hidden" for="registerEmail">
+                              Email Address *
+                            </label>
+                            <input class="form-control form-control-sm" id="registerEmail" type="email" placeholder="Email Address" required>
+                          </div>
+            
+                        </div>
+                        <div class="col-12 col-md-6">
+            
+                          <!-- Password -->
+                          <div class="form-group">
+                            <label class="visually-hidden" for="registerPassword">
+                              Password *
+                            </label>
+                            <input class="form-control form-control-sm" id="registerPassword" type="password" placeholder="Password" required>
+                          </div>
+            
+                        </div>
+                        <div class="col-12 col-md-6">
+            
+                          <!-- Password -->
+                          <div class="form-group">
+                            <label class="visually-hidden" for="registerPasswordConfirm">
+                              Confirm Password *
+                            </label>
+                            <input class="form-control form-control-sm" id="registerPasswordConfirm" type="password" placeholder="Confrm Password" required>
+                          </div>
+            
+                        </div>
+            
+                        <div class="col-12 col-md">
+            
+                          <div class="form-group">
+                            <div class="form-check">
+                              <input class="form-check-input" id="CookiePolicy" type="checkbox">
+                              <label class="form-check-label" for="CookiePolicy">
+                                By registering your details, you agree with our Terms & Conditions,
+                                and Privacy and Cookie Policy.
+                              </label>
+                            </div>
+                          </div>
+            
+                        </div>
+                        <div class="col-12">
+            
+                          <!-- Button -->
+                          <button class="btn btn-sm btn-dark" type="submit">
+                            Register
+                          </button>
+                          <br>
+                          <br>
+                          <a class="fs-sm text-reset" href="Login.html">Have an Account ?</a>
+
+            
+                        </div>
+                      </div>
+                    </form>
+            
+                  </div>
+                </div>
+            
+              </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="assets/js/vendor.bundle.js"></script>
+    <script src="assets/js/theme.bundle.js"></script>
+
+  </body>
+
+
+</html>

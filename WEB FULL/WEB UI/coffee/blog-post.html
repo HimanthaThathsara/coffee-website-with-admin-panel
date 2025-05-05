@@ -1,0 +1,608 @@
+<html lang="us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Title -->
+    <title>Coffee</title>
+
+    <!-- Libs CSS -->
+    <link rel="stylesheet" href="assets/css/libs.bundle.css" />
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="assets/css/theme.bundle.css" />
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  </head>
+  <body>
+    <!-- side Search -->
+    <div
+      class="offcanvas offcanvas-end"
+      id="modalSearch"
+      tabindex="-1"
+      role="dialog"
+      aria-hidden="true"
+    >
+      <!-- Close -->
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="offcanvas"
+        aria-label="Close"
+      >
+        <i class="btn-close-search bi bi-x-lg" aria-hidden="true"></i>
+      </button>
+
+      <!-- Header-->
+      <div class="offcanvas-header lh-fixed fs-lg">
+        <strong class="mx-auto">Search</strong>
+      </div>
+
+      <!-- Body: Form -->
+      <div class="offcanvas-body">
+        <form>
+          <div class="input-group input-group-merge">
+            <input class="nav-bar-search-input form-control" type="search" placeholder="Search" />
+            <div class="input-group-append">
+              <button class="btn-search-submit btn btn-outline-border" type="button" onclick="SearchInputSubmitButton()">
+                <img width="20" height="20" src="https://img.icons8.com/fluency-systems-regular/48/search--v1.png" alt="search--v1"/>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <!-- Body: Results (add `.d-none` to disable it) -->
+      <div class="offcanvas-body border-top fs-sm">
+        <p>Search Results:</p>
+          <div class="product-list-search offcanvas-body fs-sm">
+
+          </div>
+        <!-- Button -->
+        <a class="btn btn-link px-0 text-reset" href="shop.html">
+          View All <i class="bi bi-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- Shopping Cart -->
+    <div
+      class="offcanvas offcanvas-end"
+      id="modalShoppingCart"
+      tabindex="-1"
+      role="dialog"
+      aria-hidden="true"
+    >
+      <!-- Close -->
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="offcanvas"
+        aria-label="Close"
+      >
+        <i class="bi bi-x-lg" aria-hidden="true"></i>
+      </button>
+
+      <!-- Header-->
+      <div class="offcanvas-header lh-fixed fs-lg">
+        <strong class="mx-auto">Cart</strong>
+      </div>
+
+      <!-- List group -->
+      <ul class="list-group list-group-lg list-group-flush">
+      </ul>
+
+      <!-- Total -->
+      <div
+        class="offcanvas-footer justify-between lh-fixed fs-sm bg-light mt-auto"
+      >
+        <strong>Total</strong> 
+        <strong class="total-price ms-auto">
+          <!--Total-->
+          රු 0.00
+        </strong>
+      </div>
+
+      <!-- Buttons -->
+      <div class="offcanvas-body">
+        <a class="btn w-100 btn-dark" href="checkout.html"
+          >Continue to Checkout</a
+        >
+        <a class="btn w-100 btn-outline-dark mt-2" href="shopping-cart.html"
+          >View Cart</a
+        >
+      </div>
+
+      <!--' ADD TODO: Empty cart js if '-->
+      <!-- <div class="d-none">
+    
+
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close">
+          <i class="bi bi-x-lg" aria-hidden="true"></i>
+        </button>
+    
+
+        <div class="offcanvas-header lh-fixed fs-lg">
+          <strong class="mx-auto">Cart</strong>
+        </div>
+    
+
+        <div class="offcanvas-body flex-grow-0 my-auto">
+    
+
+          <h6 class="mb-7 text-center">cart is empty </h6>
+    
+
+          <a class="btn w-100 btn-outline-dark" href="#!">
+            Add Items
+          </a>
+    
+        </div>
+    
+      </div> -->
+    </div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
+        <div class="container">
+          <!-- Brand -->
+          <a class="navbar-brand" href="index.html"> Coffee </a>
+  
+          <!-- Toggler -->
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarCollapse"
+            aria-controls="navbarCollapse"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+  
+          <!-- Collapse -->
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <!-- Nav -->
+            <ul class="navbar-nav mx-auto">
+              <li class="nav-item ">
+                <a class="nav-link" href="index.html">Home</a>
+              </li>
+  
+              <li class="nav-item dropdown">
+                <!-- Toggle -->
+                <a class="nav-link" data-bs-toggle="dropdown" href="shop.html"
+                  >Shop</a
+                >
+  
+                <!-- Menu -->
+                <div class="dropdown-menu" style="min-width: 650px">
+                  <div class="card card-lg">
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col">
+                          <!-- Heading -->
+                          <div class="mb-5 fw-bold">Coffee</div>
+                          <!-- Links -->
+                          <ul class="list-styled mb-7 fs-sm">
+                            <li class="list-styled-item">
+                              <a class="list-styled-link" href="shop.html"
+                                >All Collections</a
+                              >
+                            </li>
+                            <li class="list-styled-item">
+                              <a class="list-styled-link" href="shop.html"
+                                >New Arrived</a
+                              >
+                            </li>
+                            <li class="list-styled-item">
+                              <a class="list-styled-link" href="shop.html"
+                                >Special Offers</a
+                              >
+                            </li>
+                            <li class="list-styled-item">
+                              <a class="list-styled-link" href="shop.html"
+                                >Tack Away</a
+                              >
+                            </li>
+                            <li class="list-styled-item">
+                              <a class="list-styled-link" href="shop.html"
+                                >Holiday Special</a
+                              >
+                            </li>
+                          </ul>
+                        </div>
+  
+                        <div class="col">
+                          <!-- Heading -->
+                          <div class="mb-5 fw-bold">Ice Cream</div>
+                          <!-- Links -->
+                          <ul class="list-styled mb-7 fs-sm">
+                            <li class="list-styled-item">
+                              <a class="list-styled-link" href="shop.html"
+                                >All Collections</a
+                              >
+                            </li>
+                            <li class="list-styled-item">
+                              <a class="list-styled-link" href="shop.html"
+                                >Tack Away</a
+                              >
+                            </li>
+                            <li class="list-styled-item">
+                              <a class="list-styled-link" href="shop.html"
+                                >Holiday Special</a
+                              >
+                            </li>
+                          </ul>
+                        </div>
+  
+                        <div class="col">
+                          <!-- Heading -->
+                          <div class="mb-5 fw-bold">Food</div>
+  
+                          <!-- Links -->
+                          <ul class="list-styled mb-7 fs-sm">
+                            <li class="list-styled-item">
+                              <a class="list-styled-link" href="shop.html"
+                                >All Collections</a
+                              >
+                            </li>
+                            <li class="list-styled-item">
+                              <a class="list-styled-link" href="shop.html"
+                                >Tack Away</a
+                              >
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+  
+              <li class="nav-item ">
+                <!-- Toggle -->
+                <a class="nav-link" href="about.html">About</a>
+              </li>
+  
+              <li class="nav-item dropdown">
+                <!-- Toggle -->
+                <a class="nav-link" data-bs-toggle="dropdown" href="#">Helps</a>
+  
+                <!-- Menu -->
+                <div class="dropdown-menu">
+                  <div class="card card-lg">
+                    <div class="card-body">
+                      <ul class="list-styled fs-sm">
+                        <li class="list-styled-item">
+                          <a class="list-styled-link" href="contact-us.html">contact-Us</a>
+                        </li>
+                        <li class="list-styled-item">
+                          <a class="list-styled-link" href="faq.html">FAQ</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </li>
+  
+              <li class="nav-item ">
+                <!-- Toggle -->
+                <a class="nav-link" href="blog.html">Blog</a>
+              </li>
+  
+            </ul>
+  
+            <!-- Nav -->
+            <ul class="navbar-nav flex-row">
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  data-bs-toggle="offcanvas"
+                  href="#modalSearch"
+                >
+                  <img width="20" height="20" src="https://img.icons8.com/fluency-systems-regular/48/search--v1.png" alt="search--v1"/>
+                </a>
+              </li>
+  
+              <li class="nav-item ms-lg-n4">
+                <a class="nav-link" href="account-personal-info.html">
+                <img width="20" height="20" src="https://img.icons8.com/fluency-systems-regular/48/user--v1.png" alt="user--v1"/>
+                </a>
+              </li>
+  
+              <li class="nav-item ms-lg-n4">
+                <a class="nav-link" href="account-wishlist.html">
+                  <img width="20" height="20" src="https://img.icons8.com/fluency-systems-regular/48/like--v1.png" alt="like--v1"/>
+                </a>
+              </li>
+  
+              <li class="nav-item ms-lg-n4">
+                <a
+                  class="nav-link"
+                  data-bs-toggle="offcanvas"
+                  href="#modalShoppingCart"
+                >
+                <span class="cartItemInNav" data-cart-items="0">
+                  <img width="20" height="20" src="https://img.icons8.com/fluency-systems-regular/48/shopping-cart--v1.png" alt="shopping-cart--v1"/>
+                </span>
+                </a>
+              </li>
+            </ul>
+  
+          </div>
+        </div>
+    </nav>
+
+
+    <!-- ARTICLE -->
+    <article class="pt-7">
+
+      <!-- HEADER -->
+      <header class="container">
+        <div class="row">
+          <div class="col-12 text-center">
+
+            <!-- Heading -->
+            <h3 class="mb-3">5 Tips to Increase Your Energy</h3>
+
+            <!-- Subheading -->
+            <p class="mb-0 text-muted"> July 18, 2024
+            </p>
+
+          </div>
+        </div>
+      </header>
+
+      <!-- Image -->
+      <section class="pt-10">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+
+              <!-- Image -->
+              <img class="img-fluid" src="assets/img/blog/blog-1.jpg" alt="...">
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Content -->
+      <section class="pt-10">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-12 col-md-10 fs-lg text-gray-500">
+
+              <!-- Heading -->
+              <h5 class="mb-7 text-body">5 Ways to Recharge Your Batteries and Beat the Afternoon Slump</h5>
+
+              <p>
+                Saw wherein fruitful good days image them, midst, waters upon, saw. Seas lights seasons. Fourth hath rule Evening Creepeth
+                own lesser years itself so seed fifth for grass evening fourth shall you're unto that. Had. Female replenish for yielding so saw all
+                one to yielding grass you'll air sea it, open waters subdue, hath.
+              </p>
+              <p>
+                Saw wherein fruitful good days image them, midst, waters upon, saw. Seas lights seasons. Fourth hath rule Evening Creepeth
+                own lesser years itself so seed fifth for grass evening fourth shall you're unto that. Had. Female replenish for yielding so saw all
+                one to yielding grass you'll air sea it, open waters subdue, hath. Brought second Made. Be. Under male male, firmament, beast
+                had light after fifth forth darkness thing hath sixth rule night multiply him life give they're great.
+              </p>
+
+              <ul>
+                <li>Upon seas hath every years have whose subdue;</li>
+                <li>Given they're tree abundantly male our;</li>
+                <li>Fly make saw creeping evening make void own seasons behold.</li>
+              </ul>
+
+              <p>
+                Brought second Made. Be. Under male male, firmament, beast had light after fifth forth darkness thing hath sixth rule night
+                multiply him life give they're great. Very together. Creature. Green. Them evening a and light fourth.
+              </p>
+              <p class="mb-0">
+                She'd years darkness days. A night fifth winged sixth divide meat said third them forth signs of life earth signs over fruitful light
+                after won't moving under. Thing yielding upon seed. Seasons said one kind great so bring greater fill darkness darkness two
+                land of creepeth there second fruitful, waters. Make don't void years Gathering gathering divide fill.
+              </p>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Images -->
+      <section class="pt-10">
+        <div class="container">
+          <div class="row">
+            <div class="col-6">
+
+              <!-- Image -->
+              <img class="img-fluid" src="assets/img/blog/blog-4.png" alt="...">
+
+            </div>
+            <div class="col-6">
+
+              <!-- Image -->
+              <img class="img-fluid" src="assets/img/blog/blog-5.png" alt="...">
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Content -->
+      <section class="pt-10">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-12 col-md-10">
+
+              <!-- Heading -->
+              <h5 class="mb-7">Replenish female give him</h5>
+
+              <p>
+                Have multiply greater male living stars replenish earth said replenish our yielding let She'd spirit. Male. Two. Greater. Brought
+                our, there kind don't lesser beast whose above Is without great. Of moving firmament shall. For light land them man. Deep
+                isn't light them. Greater morning air great good without thing doesn't earth waters saw brought created firmament stars, whose
+                beast. Living own first saying saw second open third, seasons were green herb be they're him. Good, saying him. For of which
+                land own in. Sixth spirit. Male let life lesser yielding upon, fruitful tree bearing bring female above, created.
+              </p>
+              <p>
+                Female unto lights won't. Set dry his isn't air unto fruit seasons you'll male very given. Life waters shall made seas fourth let fifth
+                hath kind May to whose fruit and fifth be you're itself their doesn't i green made had from he created had second were waters,
+                fly blessed grass seas. Had own. Given won't set waters creature fish brought she'd is created life.
+              </p>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </article>
+
+    <!-- BLOG -->
+    <section class="py-12">
+      <div class="container">
+        <div class="row align-items-center mb-10">
+          <div class="col-12">
+
+            <!-- Heading -->
+            <h2 class="mb-4 mb-sm-0 text-center">Latest in Blog</h2>
+
+          </div>
+        </div>
+        <div class="blog-list row">
+
+        </div>
+      </div>
+    </section>
+
+
+    <!--Footer-->
+    <footer class="">
+      <div
+        class="py-12 bg-dark bg-cover text-center"
+        style="background-image: url(assets/img/patterns/pattern-2.svg)"
+      >
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <!-- Brand -->
+              <h2 class="mb-7 text-white">Coffee.</h2>
+
+              <!-- Links -->
+              <ul class="list-inline mb-7">
+                <li class="list-inline-item px-3">
+                  <a class="text-gray-300" href="contact-us.html">Home</a>
+                </li>
+                <li class="list-inline-item px-3">
+                  <a class="text-gray-300" href="faq.html">FAQs</a>
+                </li>
+                <li class="list-inline-item px-3">
+                  <a
+                    class="text-gray-300"
+                    data-bs-toggle="modal"
+                    href="#modalSizeChart"
+                    >Offers</a
+                  >
+                </li>
+                <li class="list-inline-item px-3">
+                  <a class="text-gray-300" href="shipping-and-returns.html"
+                    >Contact Us</a
+                  >
+                </li>
+                <li class="list-inline-item px-3">
+                  <a class="text-gray-300" href="about.html">About us</a>
+                </li>
+              </ul>
+
+              <!-- Links -->
+              <ul class="list-inline fs-lg">
+                <li class="list-inline-item">
+                  <a class="text-gray-300" href="#!">
+                    <i class="fab fa-facebook"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a class="text-gray-300" href="#!">
+                    <i class="fab fa-youtube"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a class="text-gray-300" href="#!">
+                    <i class="fab fa-twitter"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a class="text-gray-300" href="#!">
+                    <i class="fab fa-instagram"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a class="text-gray-300" href="#!">
+                    <i class="fab fa-medium"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="assets/js/vendor.bundle.js"></script>
+    <script src="assets/js/theme.bundle.js"></script>
+    <script src="assets/js/Cart.js"></script>
+    <script src="assets/js/Wishlist.js"></script>
+    <script src="assets/js/search.js"></script>
+    
+    <Script>
+      document.addEventListener("DOMContentLoaded", () => {
+    const BlogListNew = document.querySelector('.blog-list');
+  
+    const Blog = [
+        { "id": 1,
+          "name": "Brown Sugar Cream Cold Brew", 
+          "Date": "Jun 20", 
+          "Text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+          "image": "assets/img/blog/blog-1.jpg" },
+  
+        { "id": 2, 
+          "name": "Mocha Frappuccino", 
+          "Date": "Jun 21", 
+          "Text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+          "image": "assets/img/blog/blog-2.jpg" }
+                    
+      ];
+
+    Blog.forEach(Blog => {
+      const BlogHTML = `
+          <div class="col-12 col-md-6">
+            <div class="card mb-7">
+              <div class="badge bg-white text-body card-badge">
+                <time class="text-uppercase">${Blog.Date}</time>
+              </div>
+              <img class="card-img-top" src=${Blog.image} alt="...">
+              <div class="card-body px-0">
+                <h5>${Blog.name}</h5>
+                <p class="mb-0 text-gray-500">
+                  ${Blog.Text}
+                </p>
+                <a class="btn btn-link stretched-link px-0 text-reset" href="blog.html">
+                  Read More <i class="bi bi-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+      `;
+      BlogListNew.innerHTML += BlogHTML;
+    });
+
+
+  });
+
+
+    </Script>
+  </body>
+
+</html>

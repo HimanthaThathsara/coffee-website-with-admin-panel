@@ -1,0 +1,423 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Dashboard</title>
+    <link href="assets/vendor/fontawesome/css/fontawesome.min.css" rel="stylesheet">
+    <link href="assets/vendor/fontawesome/css/solid.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/master.css" rel="stylesheet">
+</head>
+<style> 
+    .modal 
+    {   display: none; 
+        position: fixed; 
+        z-index: 1; 
+        padding-top: 100px; 
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%; 
+        overflow: auto; 
+        background-color: rgb(0,0,0); 
+        background-color: rgba(0,0,0,0.4); 
+    }
+    .modal-content 
+    {   background-color: #fefefe; 
+        margin: auto; 
+        padding: 20px; 
+        border: 1px solid #888; 
+        width: 80%; 
+    }
+    .close 
+    {   color: #aaa; 
+        float: right; 
+        font-size: 28px; 
+        font-weight: bold; 
+    }
+    .close:hover, .close:focus 
+    {   color: black; 
+        text-decoration: none; 
+        cursor: pointer; 
+    }
+
+
+#editPopupForm {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    display: none; 
+}
+
+
+#editPopupForm::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+}
+
+
+#editProductForm {
+    display: flex;
+    flex-direction: column;
+}
+
+#editProductForm label {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+#editProductForm input[type="text"],
+#editProductForm input[type="number"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#editProductForm button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+#editProductForm button[type="button"] {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+#editProductForm button[type="submit"]:hover,
+#editProductForm button[type="button"]:hover {
+    opacity: 0.9;
+}
+
+</style>
+
+<body>
+    <div class="wrapper">
+        <div id="body" class="active">
+
+            <!-- navbar -->
+            <nav class="navbar navbar-expand-lg navbar-white bg-white">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="nav navbar-nav ms-auto">
+                        <li class="nav-item dropdown">
+                            <div class="nav-dropdown">
+                                <a href="#" id="nav2" class="nav-item nav-link dropdown-toggle text-secondary" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fas fa-user"></i> <span>Himantha Thathsara</span> <i style="font-size: .8em;" class="fas fa-caret-down"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-end nav-link-menu">
+                                    <ul class="nav-list">
+                                        <li><a href="" class="dropdown-item"><i class="fas fa-cog"></i> Settings</a></li>
+                                        <div class="dropdown-divider"></div>
+                                        <li><a href="login.html" class="dropdown-item"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <!-- navbar end -->
+
+            <div class="content">
+                <div class="container">
+
+                    <div class="row">
+                        <div class="col-md-12 page-header">
+                            <div class="page-pretitle">Overview</div>
+                            <h2 class="page-title">Dashboard</h2>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-6 col-md-6 col-lg-3 mt-3">
+                            <div class="card">
+                                <div class="content">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="icon-big text-center">
+                                                <i class="teal fas fa-shopping-cart"></i>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <div class="detail">
+                                                <p class="detail-subtitle">All Products</p>
+                                                <span class="number" id="All-Products"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="footer">
+                                        <hr />
+                                        <div class="stats">
+                                            <i class="fas fa-shopping-cart"></i> For this Week
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-6 col-lg-3 mt-3">
+                            <div class="card">
+                                <div class="content">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="icon-big text-center">
+                                                <i class="olive fas fa-money-bill-alt"></i>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <div class="detail">
+                                                <p class="detail-subtitle">Average Price</p>
+                                                <span class="number" id="Averege-price"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="footer">
+                                        <hr />
+                                        <div class="stats">
+                                            <i class="fas fa-dollar"></i> For this Month
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-6 col-lg-3 mt-3">
+                            <div class="card">
+                                <div class="content">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="icon-big text-center">
+                                                <i class="violet fas fa-user"></i>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <div class="detail">
+                                                <p class="detail-subtitle">Users</p>
+                                                <span class="number" id="Users-In-System">2</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="footer">
+                                        <hr />
+                                        <div class="stats">
+                                            <i class="fas fa-user"></i> For this Month
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-6 col-lg-3 mt-3">
+                            <div class="card">
+                                <div class="content">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="icon-big text-center">
+                                                <i class="orange fas fa-trash"></i>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <div class="detail">
+                                                <p class="detail-subtitle">Delete Products</p>
+                                                <span class="number" id="Delete-Items"> </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="footer">
+                                        <hr />
+                                        <div class="stats">
+                                            <i class="fas fa-trash"></i> For this week
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="content">
+
+                                    <div class="page-title">
+                                        <h3>Product Management
+                                            <a href="#" id="addProductButton" class="btn btn-sm btn-outline-primary float-end">
+                                                <i class="fas fa-plus-circle"></i> Add Product
+                                            </a>
+                                        </h3>
+                                    </div>
+        
+                                    <div class="box box-primary">
+                                            <div class="box-body">
+                                                <table width="100%" class="table table-hover" id="dataTables-example">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Image</th>
+                                                            <th>Name</th>
+                                                            <th>Category</th>
+                                                            <th>Price</th>
+                                                            <th>Badge</th>
+                                                            <th>Offer Price</th>
+                                                            <th></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="productList">
+                                                        <!--Products-->
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content card">
+                        <div class="container">
+                            <div class="page-title">
+                                <h3>Users
+                                    <a href="#" class="btn btn-sm btn-outline-primary float-end">
+                                        <i class="fas fa-plus-circle"></i> Add
+                                    </a>
+                                </h3>
+                            </div>
+                            <div class="box box-primary">
+                                <div class="box-body">
+                                    <table width="100%" class="table table-hover" id="dataTables-example">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Email</th>
+                                                <th>Password</th>
+                                                <th>Address</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Oshada</td>
+                                                <td>Oshdarathnayak@gmail.com</td>
+                                                <td>Nothing123</td>
+                                                <td>277 
+                                                    Badulla 
+                                                    sri-lanaka</td>
+                                                <td class="text-end">
+                                                    <a href="" class="btn btn-outline-danger btn-rounded"><i class="fas fa-trash"></i></a>
+                                                </td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="position-fixed bottom-0 right-0 p-3" style="z-index: 5; right: 0; bottom: 0;">
+        <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="true" data-bs-delay="3000">
+          <div class="toast-header">
+            <svg class="bd-placeholder-img rounded me-2" width="20" height="20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+                <rect width="100%" height="100%" fill="#007aff"></rect>
+            </svg>
+            <strong class="me-auto">Notification</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+          <div class="toast-body">
+            Welcome back!
+          </div>
+        </div>
+    </div>
+
+
+    <div class="container">
+    
+        <div id="popupForm" class="modal">
+            <div class="modal-content" >
+                <span class="close" id="closePopup">&times;</span>
+                <form id="productForm">
+                    <div class="form-group">
+                        <label for="productImage">Image Path:</label>
+                        <input type="text" class="form-control" id="productImage" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="productName">Name:</label>
+                        <input type="text" class="form-control" id="productName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="productCatagory">Category:</label>
+                        <input type="text" class="form-control" id="productCatagory" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="productPrice">Price:</label>
+                        <input type="number" class="form-control" id="productPrice" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="productOfferPrice">Offer Price:</label>
+                        <input type="number" class="form-control" id="productOfferPrice" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="productBadge">Badge:</label>
+                        <input type="text" class="form-control" id="productBadge" required>
+                    </div>
+                    <button type="submit" class="btn btn-success">Add Product</button>
+                </form>
+            </div>
+        </div>
+    
+    </div>
+
+
+<div id="editPopupForm" style="display:none;">
+    <form id="editProductForm">
+        <label for="editProductImage">Image Path:</label>
+        <input type="text" id="editProductImage" required>
+        <input type="hidden" id="editProductIndex">
+        <label for="editProductName">Name:</label>
+        <input type="text" id="editProductName" required>
+        <label for="editProductCategory">Category:</label>
+        <input type="text" id="editProductCategory" required>
+        <label for="editProductPrice">Price:</label>
+        <input type="number" id="editProductPrice" required>
+        <label for="editProductOfferPrice">Offer Price:</label>
+        <input type="number" id="editProductOfferPrice" required>
+        <button type="submit">Update Product</button>
+        <button type="button" id="closeEditPopup">Cancel</button>
+    </form>
+</div>
+
+</body>
+
+<script src="assets/vendor/jquery/jquery.min.js"></script>
+<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/form-validator.js"></script>
+<script src="script.js"></script>
+
+</html>
